@@ -22,7 +22,6 @@ export default OnBoardingA;
 
 const OnBoardingAContainer = styled.div`
   height: 100vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +35,6 @@ const LogoImg = styled.img`
 const MainText = styled.div`
   font-size: 32px;
   margin: 8px;
-  font-weight: medium;
 `;
 
 const StartButton = styled.button`

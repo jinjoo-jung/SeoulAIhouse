@@ -3,6 +3,10 @@ import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 
+interface ButtonStyleItemProps {
+  isSelected: boolean;
+}
+
 const OnBoardingB = () => {
   const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();

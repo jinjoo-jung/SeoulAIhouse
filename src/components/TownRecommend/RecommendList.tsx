@@ -64,16 +64,18 @@ const RecommendListContainer = styled.div`
   left: 0;
   margin-top: 114px;
   width: 100vw;
-  background: linear-gradient(
-    to bottom,
-    rgb(210, 223, 237) 0%,
-    rgb(210, 223, 237) 100px,
-    transparent 586px,
-    transparent 100%
-  );
+  // background: linear-gradient(
+  //   to bottom,
+  //   rgb(210, 223, 237) 0%,
+  //   rgb(210, 223, 237) 100px,
+  //   transparent 586px,
+  //   transparent 100%
+  // );
 `;
 
-const RecommendItemListContainer = styled.div``;
+const RecommendItemListContainer = styled.div`
+  margin: 100px;
+`;
 
 const RecommendCommonItemListWrap = styled.div``;
 

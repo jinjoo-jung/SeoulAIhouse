@@ -54,7 +54,7 @@ const TextInput = styled.input`
   margin-bottom: 191px;
 
   ::placeholder {
-    color: rgb(129, 129, 129, 0.4);
+    color: rgba(129, 129, 129, 0.4);
   }
 `;
 
