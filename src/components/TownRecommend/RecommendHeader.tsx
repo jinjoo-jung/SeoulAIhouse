@@ -9,7 +9,7 @@ const RecommendHeader = () => {
       <HeaderWrap>
         <HeaderText>000동 00로</HeaderText>
       </HeaderWrap>
-      <div>변경하기</div>
+      <RecommendChange>변경하기</RecommendChange>
     </RecommendHeaderContainer>
   );
 };
@@ -31,6 +31,7 @@ const HeaderWrap = styled.div`
   border: 1px solid #060606;
   display: flex;
   align-items: center;
+  margin-left: 50px;
 `;
 
 const HeaderText = styled.div`
@@ -39,4 +40,15 @@ const HeaderText = styled.div`
   margin-left: 20px;
 `;
 
-const Recommne;
+const RecommendChange = styled.button`
+  position: absolute;
+  width: 119px;
+  height: 43px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #005cab;
+  border-radius: 20px;
+  margin-left: 730px;
+  cursor: pointer;
+`;
