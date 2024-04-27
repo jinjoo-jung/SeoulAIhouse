@@ -2,6 +2,7 @@ import React from 'react';
 import homezLogo from '../../../assets/homezLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import PolygonA from '../../../assets/PolygonA.png';
 
 const OnBoardingA = () => {
   const navigate = useNavigate();
@@ -26,6 +27,9 @@ const OnBoardingAContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url(${PolygonA});
+  background-repeat: no-repeat;
+  background-position: center right; // 이미지를 컨테이너의 중앙에 위치
 `;
 
 const LogoImg = styled.img`

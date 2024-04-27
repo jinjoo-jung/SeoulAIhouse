@@ -59,23 +59,10 @@ const RecommendList = () => {
 export default RecommendList;
 
 const RecommendListContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   margin-top: 114px;
-  width: 100vw;
-  // background: linear-gradient(
-  //   to bottom,
-  //   rgb(210, 223, 237) 0%,
-  //   rgb(210, 223, 237) 100px,
-  //   transparent 586px,
-  //   transparent 100%
-  // );
 `;
 
-const RecommendItemListContainer = styled.div`
-  margin: 100px;
-`;
+const RecommendItemListContainer = styled.div``;
 
 const RecommendCommonItemListWrap = styled.div``;
 

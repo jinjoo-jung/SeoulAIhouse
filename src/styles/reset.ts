@@ -127,7 +127,6 @@ const reset = css`
     border-spacing: 0;
   }
   button {
-    background: inherit;
     border: none;
     box-shadow: none;
     border-radius: 0;
