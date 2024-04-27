@@ -1,7 +1,94 @@
 import React from 'react';
+import Clock from '../../assets/Clock.svg';
+import RecommendCommon from './RecommendCommon';
+import styled from '@emotion/styled';
 
 const RecommendList = () => {
-  return <div></div>;
+  return (
+    <RecommendListContainer>
+      <RecommendItemListContainer>
+        <RecommendCommonItemListWrap>
+          <TimeWrap>
+            <img src={Clock} alt="clock" />
+            <div>0분 ~ 60분</div>
+          </TimeWrap>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </RecommendCommonItemListWrap>
+        <RecommendItemListWrap>
+          <TimeWrap>
+            <img src={Clock} alt="clock" />
+            <div>0분 ~ 60분</div>
+          </TimeWrap>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </RecommendItemListWrap>
+        <RecommendItemListWrap>
+          <TimeWrap>
+            <img src={Clock} alt="clock" />
+            <div>0분 ~ 60분</div>
+          </TimeWrap>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </RecommendItemListWrap>{' '}
+        <RecommendItemListWrap>
+          <TimeWrap>
+            <img src={Clock} alt="clock" />
+            <div>0분 ~ 60분</div>
+          </TimeWrap>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </RecommendItemListWrap>
+      </RecommendItemListContainer>
+    </RecommendListContainer>
+  );
 };
 
 export default RecommendList;
+
+const RecommendListContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 114px;
+  width: 100vw;
+  background: linear-gradient(
+    to bottom,
+    rgb(210, 223, 237) 0%,
+    rgb(210, 223, 237) 100px,
+    transparent 586px,
+    transparent 100%
+  );
+`;
+
+const RecommendItemListContainer = styled.div``;
+
+const RecommendCommonItemListWrap = styled.div``;
+
+const RecommendItemListWrap = styled.div``;
+
+const TimeWrap = styled.div`
+  display: flex;
+  align-items: center;
+
+  div {
+    font-size: 32px;
+    font-weight: bold;
+  }
+`;
+
+const RecommendCommonWrap = styled.div`
+  display: flex;
+`;

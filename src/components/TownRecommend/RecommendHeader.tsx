@@ -17,11 +17,15 @@ const RecommendHeader = () => {
 export default RecommendHeader;
 
 const RecommendHeaderContainer = styled.div`
+  position: fixed;
+  width: 100%;
   height: 114px;
   display: flex;
   align-items: center;
+  background-color: white;
   justify-content: center;
   border-bottom: 1px solid #8c8c8c;
+  z-index: 1;
 `;
 
 const HeaderWrap = styled.div`
