@@ -20,7 +20,6 @@ function App() {
           <Route path="/onBoardingB" element={<OnBoardingB />} />
           <Route path="/onBoardingC" element={<OnBoardingC />} />
           <Route path="/onBoardingD" element={<OnBoardingD />} />
-
           <Route path="/townRecommend" element={<TownRecommend />} />
           <Route path="/townInfo" element={<TownInfo />} />
         </Routes>

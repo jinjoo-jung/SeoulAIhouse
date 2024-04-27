@@ -1,12 +1,12 @@
 import React from 'react';
 import RecommendHeader from '../../components/TownRecommend/RecommendHeader';
-import RecommneList from '../../components/TownRecommend/RecommneList';
+import RecommendList from '../../components/TownRecommend/RecommendList';
 
 const TownRecommend = () => {
   return (
     <div>
       <RecommendHeader />
-      <RecommneList />
+      <RecommendList />
     </div>
   );
 };
