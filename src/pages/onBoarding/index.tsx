@@ -1,5 +1,5 @@
 import React from 'react';
-import OnBoardingA from '../../components/OnBoarding/OnBoardingA';
+import OnBoardingA from './OnBoardingA';
 
 const OnBoarding = () => {
   return (

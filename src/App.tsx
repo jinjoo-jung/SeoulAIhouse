@@ -6,6 +6,9 @@ import TownRecommend from './pages/townRecommend';
 import TownInfo from './pages/townInfo';
 import { Global } from '@emotion/react';
 import reset from './styles/reset';
+import OnBoardingB from './pages/onBoarding/OnBoardingB';
+import OnBoardingD from './pages/onBoarding/OnBoardingD';
+import OnBoardingC from './pages/onBoarding/OnBoardingC';
 
 function App() {
   return (
@@ -14,6 +17,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<OnBoarding />} />
+          <Route path="/onBoardingB" element={<OnBoardingB />} />
+          <Route path="/onBoardingC" element={<OnBoardingC />} />
+          <Route path="/onBoardingD" element={<OnBoardingD />} />
+
           <Route path="/townRecommend" element={<TownRecommend />} />
           <Route path="/townInfo" element={<TownInfo />} />
         </Routes>
