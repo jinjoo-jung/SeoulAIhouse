@@ -38,6 +38,7 @@ const LogoImg = styled.img`
 
 const MainText = styled.div`
   font-size: 32px;
+  font-weight: 500;
   margin: 8px;
 `;
 
@@ -47,6 +48,8 @@ const StartButton = styled.button`
   color: white;
   background-color: #005cab;
   font-size: 24px;
+  font-weight: 500;
+
   border-radius: 20px;
   margin-top: 50px;
   cursor: pointer;

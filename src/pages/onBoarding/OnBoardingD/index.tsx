@@ -98,6 +98,8 @@ const NextButton = styled.button`
   color: white;
   background-color: #005cab;
   font-size: 24px;
+  font-weight: 500;
+
   border-radius: 20px;
   margin-top: 125px;
   cursor: pointer;

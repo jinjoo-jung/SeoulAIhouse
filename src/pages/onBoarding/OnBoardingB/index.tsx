@@ -57,7 +57,7 @@ const OnBoardingBContainer = styled.div`
 const MainText = styled.div`
   font-size: 32px;
   margin: 8px;
-  font-weight: medium;
+  font-weight: bold;
   margin-top: 30px;
   margin-bottom: 50px;
 `;
@@ -89,4 +89,5 @@ const NextButton = styled.button`
   border-radius: 20px;
   margin-top: 50px;
   cursor: pointer;
+  font-weight: 500;
 `;
