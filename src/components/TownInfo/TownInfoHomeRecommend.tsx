@@ -1,7 +1,12 @@
 import React from 'react';
+import TownInoHomeItem from './TownInfoHomeItem';
 
 const TownInfoHomeRecommend = () => {
-  return <div></div>;
+  return (
+    <div>
+      <TownInoHomeItem />
+    </div>
+  );
 };
 
 export default TownInfoHomeRecommend;
