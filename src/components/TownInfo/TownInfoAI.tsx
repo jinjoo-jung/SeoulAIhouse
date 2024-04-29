@@ -58,8 +58,8 @@ const TownInfoContainer = styled.div`
 `;
 
 const TownInfoChartContainer = styled.div`
-  width: 1048px;
-  height: 751px;
+  // width: 1048px;
+  // height: 751px;
 `;
 
 const ChartTownText = styled.div`
@@ -87,8 +87,8 @@ const ChartContent = styled.div`
 `;
 
 const ChartItemContainer = styled.div`
-  width: 834px;
-  height: 432px;
+  // width: 834px;
+  // height: 432px;
   display: flex;
 `;
 
