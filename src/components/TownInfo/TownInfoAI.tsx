@@ -58,18 +58,21 @@ const TownInfoContainer = styled.div`
 `;
 
 const TownInfoChartContainer = styled.div`
-  // width: 1048px;
-  // height: 751px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const ChartTownText = styled.div`
   font-size: 32px;
   font-weight: bold;
+  margin-top: 100px;
+  margin-bottom: 40px;
 `;
 
 const ChartAIContainer = styled.div`
-  width: 100%;
-  height: 93px;
+  width: 1048px;
+  height: 113px;
   background-color: #f6f6f6;
   border-radius: 20px;
   padding: 40px;
@@ -87,9 +90,11 @@ const ChartContent = styled.div`
 `;
 
 const ChartItemContainer = styled.div`
-  // width: 834px;
-  // height: 432px;
+  width: 834px;
+  height: 432px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ChartItemWrap = styled.div`

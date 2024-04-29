@@ -4,6 +4,7 @@ import TownInfoAI from '../../components/TownInfo/TownInfoAI';
 import styled from '@emotion/styled';
 import TownInfoHomeRecommend from '../../components/TownInfo/TownInfoHomeRecommend';
 import TownInfoPhone from '../../components/TownInfo/TownInfoPhone';
+import TownInfoMap from '../../components/TownInfo/TownInfoMap';
 
 const TownInfo = () => {
   return (
@@ -14,6 +15,7 @@ const TownInfo = () => {
           <TownInfoAI />
           <TownInfoHomeRecommend />
           <TownInfoPhone />
+          <TownInfoMap />
         </TownInfoContentWrap>
       </TownInfoContentContainer>
     </div>

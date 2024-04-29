@@ -32,11 +32,12 @@ const HomeWrap = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  margin-top: 100px;
 
   div {
     font-size: 32px;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 16px;
   }
 `;
 const ScrollContainer = styled.div`
