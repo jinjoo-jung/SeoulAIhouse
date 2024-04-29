@@ -31,6 +31,7 @@ const RecommendCommon = () => {
 export default RecommendCommon;
 
 const RecommendCommonContainer = styled.div`
+  position: relative;
   width: 408px;
   height: 300px;
   border-radius: 20px;
@@ -39,6 +40,8 @@ const RecommendCommonContainer = styled.div`
 
 const Ranking = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,13 +56,13 @@ const Ranking = styled.div`
 `;
 
 const RecommendCommonWrap = styled.div`
-  height: 100%;
+  max-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding-top: 10px;
+  padding-top: 50px;
 `;
 
 const AreaText = styled.div`

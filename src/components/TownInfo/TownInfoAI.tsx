@@ -27,21 +27,21 @@ const TownInfoAI = () => {
               </ChartInfoWrap>
               <div>10분</div>
             </ChartInfoContainer>
-            <ChartInfoContainer>
+            <ChartInfoContainerB>
               <ChartInfoWrap>
                 <img src={chartTrain} alt="chartTrain" />
                 <div>지하철역</div>
               </ChartInfoWrap>
               <div>이대역</div>
-            </ChartInfoContainer>
+            </ChartInfoContainerB>
             <ChartInfoContainer>
-              <div>평균 월세</div>
+              <ChartInfoText>평균 월세</ChartInfoText>
               <div>80/500</div>
             </ChartInfoContainer>
-            <ChartInfoContainer>
-              <div>평균 전세</div>
+            <ChartInfoContainerB>
+              <ChartInfoText>평균 전세</ChartInfoText>
               <div>80/500</div>
-            </ChartInfoContainer>
+            </ChartInfoContainerB>
           </ChartItemWrap>
           <div>통계 자리</div>
         </ChartItemContainer>
@@ -99,8 +99,7 @@ const ChartItemWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
-  gap: 20px;
+  gap: 40px;
 `;
 
 const ChartItemText = styled.div`
@@ -113,6 +112,7 @@ const ChartItemText = styled.div`
     font-size: 60px;
     font-weight: bold;
     color: #0b9cdb;
+    margin-left: 20px;
   }
 `;
 
@@ -121,6 +121,23 @@ const ChartInfoContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 20px;
+  font-weight: 600;
+`;
+
+const ChartInfoContainerB = styled.div`
+  width: 250px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: -20px;
+`;
+
+const ChartInfoText = styled.div`
+  font-size: 20px;
+  font-weight: 6x00;
+  color: #8c8c8c;
+  margin-right: 90px;
 `;
 
 const ChartInfoWrap = styled.div`
@@ -129,4 +146,8 @@ const ChartInfoWrap = styled.div`
   justify-content: center;
   color: #8c8c8c;
   font-size: 20px;
+  margin-right: 60px;
+  img {
+    margin-right: 10px;
+  }
 `;
