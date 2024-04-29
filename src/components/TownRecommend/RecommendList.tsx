@@ -19,9 +19,49 @@ const RecommendList = () => {
           <RecommendCommon />
         </RecommendCommonWrap>
       </ScrollContainer>
+      <Divider />
       <TimeWrap>
         <img src={Clock} alt="clock" />
-        <div>0분 ~ 60분</div>
+        <div>0분 ~ 30분</div>
+      </TimeWrap>
+      <ScrollContainer>
+        <RecommendCommonWrap>
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+        </RecommendCommonWrap>
+      </ScrollContainer>
+      <TimeWrap>
+        <img src={Clock} alt="clock" />
+        <div>30분 ~ 60분</div>
+      </TimeWrap>
+      <ScrollContainer>
+        <RecommendCommonWrap>
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+        </RecommendCommonWrap>
+      </ScrollContainer>
+      <TimeWrap>
+        <img src={Clock} alt="clock" />
+        <div>60분 ~ 90분</div>
+      </TimeWrap>
+      <ScrollContainer>
+        <RecommendCommonWrap>
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+          <RecommendCommon />
+        </RecommendCommonWrap>
+      </ScrollContainer>
+      <TimeWrap>
+        <img src={Clock} alt="clock" />
+        <div>90분 이상</div>
       </TimeWrap>
       <ScrollContainer>
         <RecommendCommonWrap>
@@ -42,6 +82,7 @@ const RecommendListContainer = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 114px;
+  margin-bottom: 114px;
 `;
 
 const TimeWrap = styled.div`
@@ -80,4 +121,11 @@ const RecommendCommonWrap = styled.div`
   &::-webkit-scrollbar {
     display: none; // 스크롤바 숨기기
   }
+`;
+
+const Divider = styled.div`
+  width: 100vw;
+  height: 1px;
+  background-color: #8c8c8c;
+  margin-top: 100px;
 `;
