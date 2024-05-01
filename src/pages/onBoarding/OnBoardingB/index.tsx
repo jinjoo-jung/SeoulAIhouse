@@ -21,12 +21,18 @@ const options = [
 const OnBoardingB = () => {
   const navigate = useNavigate();
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
+  const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
 
   const handleSelectClick = (index: number) => {
+    const label = options[index];
     if (selectedOptions.includes(index)) {
       setSelectedOptions(selectedOptions.filter((i) => i !== index));
+      setSelectedLabels(selectedLabels.filter((i) => i !== label));
+      console.log(selectedLabels);
     } else {
       setSelectedOptions([...selectedOptions, index]);
+      setSelectedLabels([...selectedLabels, label]);
+      console.log(selectedLabels);
     }
   };
 
@@ -89,6 +95,7 @@ const ButtonItem = styled.button<{ isSelected: boolean }>`
   height: 65px;
   border-radius: 20px;
   font-size: 24px;
+  font-weight: 500;
   color: ${(props) => (props.isSelected ? '#0B9CDB' : '#8C8C8C')};
   background-color: transparent;
   border: ${(props) => (props.isSelected ? '3px' : '1px')} solid
