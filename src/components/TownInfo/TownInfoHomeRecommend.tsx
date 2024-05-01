@@ -17,6 +17,8 @@ const TownInfoHomeRecommend = () => {
           <TownInoHomeItem />
           <TownInoHomeItem />
           <TownInoHomeItem />
+          <TownInoHomeItem />
+          <TownInoHomeItem />
         </RecommendCommonWrap>
       </ScrollContainer>
     </div>

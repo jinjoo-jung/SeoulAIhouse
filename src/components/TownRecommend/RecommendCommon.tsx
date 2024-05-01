@@ -1,10 +1,17 @@
 import React from 'react';
 import miniClock from '../../assets/MiniClock.svg';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 const RecommendCommon = () => {
+  const navigate = useNavigate();
+
+  const handleRecommendClick = () => {
+    navigate('/towninfo');
+  };
+
   return (
-    <RecommendCommonContainer>
+    <RecommendCommonContainer onClick={() => handleRecommendClick()}>
       <Ranking>1</Ranking>
       <RecommendCommonWrap>
         <AreaText>000동</AreaText>
@@ -36,6 +43,7 @@ const RecommendCommonContainer = styled.div`
   height: 300px;
   border-radius: 20px;
   background-color: #f6f6f6;
+  cursor: pointer;
 `;
 
 const Ranking = styled.div`

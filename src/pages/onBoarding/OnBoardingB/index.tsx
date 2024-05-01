@@ -3,13 +3,32 @@ import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 
-interface ButtonStyleItemProps {
-  isSelected: boolean;
-}
+const options = [
+  '안전도',
+  '안전도',
+  '시간',
+  '안전도',
+  '안전도',
+  '안전도',
+  '안전도',
+  '안전도',
+  '안전도',
+  '안전도',
+  '안전도',
+  '안전도',
+];
 
 const OnBoardingB = () => {
-  const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
+  const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
+
+  const handleSelectClick = (index: number) => {
+    if (selectedOptions.includes(index)) {
+      setSelectedOptions(selectedOptions.filter((i) => i !== index));
+    } else {
+      setSelectedOptions([...selectedOptions, index]);
+    }
+  };
 
   const handleClickNext = () => {
     navigate(`/onBoardingC`);
@@ -22,18 +41,14 @@ const OnBoardingB = () => {
           집을 선택할 때, 가장 중요하게 보는 요소들을 선택해주세요.
         </MainText>
         <ButtonContainer>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
-          <ButtonItem>안전도</ButtonItem>
+          {options.map((label, index) => (
+            <ButtonItem
+              key={index}
+              isSelected={selectedOptions.includes(index)}
+              onClick={() => handleSelectClick(index)}>
+              {label}
+            </ButtonItem>
+          ))}
         </ButtonContainer>
         <NextButton onClick={() => handleClickNext()}>다음</NextButton>
       </OnBoardingBContainer>
@@ -69,13 +84,15 @@ const ButtonContainer = styled.div`
   gap: 30px;
 `;
 
-const ButtonItem = styled.button`
+const ButtonItem = styled.button<{ isSelected: boolean }>`
   width: 239.5px;
   height: 65px;
   border-radius: 20px;
   font-size: 24px;
-  color: #8c8c8c;
-  border: 1px solid #8c8c8c;
+  color: ${(props) => (props.isSelected ? '#0B9CDB' : '#8C8C8C')};
+  background-color: transparent;
+  border: ${(props) => (props.isSelected ? '3px' : '1px')} solid
+    ${(props) => (props.isSelected ? '#0B9CDB' : '#8C8C8C')};
   margin: 10px 0px;
   cursor: pointer;
 `;
