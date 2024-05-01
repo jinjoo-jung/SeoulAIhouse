@@ -2,6 +2,8 @@ import React from 'react';
 import Clock from '../../assets/Clock.svg';
 import RecommendCommon from './RecommendCommon';
 import styled from '@emotion/styled';
+import leftCicleIcon from '../../assets/leftCircle.svg';
+import rightCicleIcon from '../../assets/rightCircle.svg';
 
 const RecommendList = () => {
   return (
@@ -11,6 +13,7 @@ const RecommendList = () => {
         <div>0분 ~ 60분</div>
       </TimeWrap>
       <ScrollContainer>
+        <img src={leftCicleIcon} alt="leftCircle" />
         <RecommendCommonWrap>
           <RecommendCommon />
           <RecommendCommon />
@@ -18,6 +21,7 @@ const RecommendList = () => {
           <RecommendCommon />
           <RecommendCommon />
         </RecommendCommonWrap>
+        <img src={rightCicleIcon} alt="rightCicleIcon" />
       </ScrollContainer>
       <Divider />
       <TimeWrap>
