@@ -12,37 +12,37 @@ import {
 
 const data = [
   {
-    subject: 'Math',
+    subject: '안전성',
     A: 120,
     B: 110,
     fullMark: 150,
   },
   {
-    subject: 'Chinese',
+    subject: '거리',
     A: 98,
     B: 130,
     fullMark: 150,
   },
   {
-    subject: 'English',
+    subject: '시간',
     A: 86,
     B: 130,
     fullMark: 150,
   },
   {
-    subject: 'Geography',
+    subject: '주변 상가',
     A: 99,
     B: 100,
     fullMark: 150,
   },
   {
-    subject: 'Physics',
+    subject: '교통',
     A: 85,
     B: 90,
     fullMark: 150,
   },
   {
-    subject: 'History',
+    subject: '편의시설',
     A: 65,
     B: 85,
     fullMark: 150,
@@ -89,7 +89,7 @@ const TownInfoAI = () => {
               <div>80/500</div>
             </ChartInfoContainerB>
           </ChartItemWrap>
-          <div>
+          <ChartMainWrap>
             <RadarChart
               cx={300}
               cy={250}
@@ -108,7 +108,7 @@ const TownInfoAI = () => {
                 fillOpacity={0.6}
               />
             </RadarChart>
-          </div>
+          </ChartMainWrap>
         </ChartItemContainer>
       </TownInfoChartContainer>
     </TownInfoContainer>
@@ -160,6 +160,11 @@ const ChartItemContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 150px;
+`;
+
+const ChartMainWrap = styled.div`
+  margin-left: 30px;
 `;
 
 const ChartItemWrap = styled.div`
