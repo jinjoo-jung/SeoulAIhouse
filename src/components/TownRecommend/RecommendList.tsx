@@ -2,8 +2,8 @@ import React from 'react';
 import Clock from '../../assets/Clock.svg';
 import RecommendCommon from './RecommendCommon';
 import styled from '@emotion/styled';
-import leftCicleIcon from '../../assets/leftCircle.svg';
-import rightCicleIcon from '../../assets/rightCircle.svg';
+import leftCircleIcon from '../../assets/leftCircle.svg';
+import rightCircleIcon from '../../assets/rightCircle.svg';
 
 const RecommendList = () => {
   return (
@@ -13,7 +13,7 @@ const RecommendList = () => {
         <div>0분 ~ 60분</div>
       </TimeWrap>
       <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
             <RecommendCommon />
@@ -23,7 +23,7 @@ const RecommendList = () => {
             <RecommendCommon />
           </RecommendCommonWrap>
         </ScrollContainer>
-        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
       </ArrowAndScrollContainer>
       <Divider />
       <TimeWrap>
@@ -31,7 +31,7 @@ const RecommendList = () => {
         <div>0분 ~ 30분</div>
       </TimeWrap>
       <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
             <RecommendCommon />
@@ -41,14 +41,14 @@ const RecommendList = () => {
             <RecommendCommon />
           </RecommendCommonWrap>
         </ScrollContainer>
-        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
       </ArrowAndScrollContainer>
       <TimeWrap>
         <img src={Clock} alt="clock" />
         <div>30분 ~ 60분</div>
       </TimeWrap>
       <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
             <RecommendCommon />
@@ -58,14 +58,14 @@ const RecommendList = () => {
             <RecommendCommon />
           </RecommendCommonWrap>
         </ScrollContainer>
-        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
       </ArrowAndScrollContainer>
       <TimeWrap>
         <img src={Clock} alt="clock" />
         <div>60분 ~ 90분</div>
       </TimeWrap>
       <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
             <RecommendCommon />
@@ -75,14 +75,14 @@ const RecommendList = () => {
             <RecommendCommon />
           </RecommendCommonWrap>
         </ScrollContainer>
-        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
       </ArrowAndScrollContainer>
       <TimeWrap>
         <img src={Clock} alt="clock" />
         <div>90분 이상</div>
       </TimeWrap>
       <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
             <RecommendCommon />
@@ -92,7 +92,7 @@ const RecommendList = () => {
             <RecommendCommon />
           </RecommendCommonWrap>
         </ScrollContainer>
-        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
       </ArrowAndScrollContainer>
     </RecommendListContainer>
   );

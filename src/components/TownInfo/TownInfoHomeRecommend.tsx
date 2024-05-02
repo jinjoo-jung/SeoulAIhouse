@@ -2,6 +2,8 @@ import React from 'react';
 import TownInoHomeItem from './TownInfoHomeItem';
 import likeIcon from '../../assets/LikeIcon.svg';
 import styled from '@emotion/styled';
+import leftCircleIcon from '../../assets/leftCircle.svg';
+import rightCircleIcon from '../../assets/rightCircle.svg';
 
 const TownInfoHomeRecommend = () => {
   return (
@@ -10,17 +12,21 @@ const TownInfoHomeRecommend = () => {
         <img src={likeIcon} alt="likeIcon" />
         <div>매물 추천</div>
       </HomeWrap>
-      <ScrollContainer>
-        <RecommendCommonWrap>
-          <TownInoHomeItem />
-          <TownInoHomeItem />
-          <TownInoHomeItem />
-          <TownInoHomeItem />
-          <TownInoHomeItem />
-          <TownInoHomeItem />
-          <TownInoHomeItem />
-        </RecommendCommonWrap>
-      </ScrollContainer>
+      <ArrowAndScrollContainer>
+        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
+        <ScrollContainer>
+          <RecommendCommonWrap>
+            <TownInoHomeItem />
+            <TownInoHomeItem />
+            <TownInoHomeItem />
+            <TownInoHomeItem />
+            <TownInoHomeItem />
+            <TownInoHomeItem />
+            <TownInoHomeItem />
+          </RecommendCommonWrap>
+        </ScrollContainer>
+        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
+      </ArrowAndScrollContainer>
     </div>
   );
 };
@@ -53,7 +59,7 @@ const ScrollContainer = styled.div`
 
 const RecommendCommonWrap = styled.div`
   display: flex;
-  gap: 30px;
+  gap: 20px;
   flex-shrink: 0; // 컴포넌트 크기가 줄어들지 않도록 설정
 
   & > * {
@@ -64,4 +70,26 @@ const RecommendCommonWrap = styled.div`
   &::-webkit-scrollbar {
     display: none; // 스크롤바 숨기기
   }
+`;
+
+const ArrowAndScrollContainer = styled.div`
+  position: relative; // 화살표들을 이 컨테이너에 대해 절대 위치
+  display: flex;
+  align-items: center;
+`;
+
+const LeftIconImg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 110px;
+  z-index: 1;
+`;
+
+const RightIconImg = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 110px;
+  z-index: 1;
 `;
