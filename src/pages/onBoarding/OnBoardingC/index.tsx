@@ -3,10 +3,18 @@ import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import DaumPostcode from 'react-daum-postcode';
+import { isYieldExpression } from 'typescript';
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 const OnBoardingC = () => {
   const [isModal, setIsModal] = useState(false);
   const [address, setAddress] = useState('');
+  const [coords, setCoords] = useState({ x: '', y: '' });
   const navigate = useNavigate();
 
   const handleClickNext = () => {
@@ -22,11 +30,32 @@ const OnBoardingC = () => {
     console.log(isModal);
   };
 
-  const handleComplete = (data: any) => {
+  const handleComplete = (data: { address: string }) => {
     console.log(data);
     setAddress(data.address);
     setIsModal(false);
+
+    // Daum Maps Geocoder를 사용하여 좌표 검색
+    const geocoder = new window.kakao.maps.services.Geocoder();
+    geocoder.addressSearch(data.address, function (results: any, status: any) {
+      if (status === window.kakao.maps.services.Status.OK) {
+        const result = results[0];
+        setCoords({
+          x: result.x,
+          y: result.y,
+        });
+        console.log(coords.x, coords.y);
+        console.log(status);
+        // 서버로 x, y 좌표 전송하는 로직 추가
+      }
+    });
   };
+  useEffect(() => {
+    if (coords.x !== '' && coords.y !== '') {
+      console.log(address, 'x:', coords.x, 'y:', coords.y);
+      // 서버로 좌표를 전송하는 로직을 여기에 추가할 수 있습니다.
+    }
+  }, [coords, address]); // coords 상태가 변경될 때마다 실행됩니다.
 
   return (
     <div>

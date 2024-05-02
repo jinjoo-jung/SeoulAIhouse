@@ -53,7 +53,7 @@ const TownInfoAI = () => {
   return (
     <TownInfoContainer>
       <TownInfoChartContainer>
-        <ChartTownText>000동</ChartTownText>
+        <ChartTownText>000동 AI 리포트</ChartTownText>
         <ChartAIContainer>
           <ChartAIText>AI 종합 분석</ChartAIText>
           <ChartContent>
@@ -131,7 +131,7 @@ const TownInfoChartContainer = styled.div`
 const ChartTownText = styled.div`
   font-size: 32px;
   font-weight: bold;
-  margin-top: 100px;
+  margin-top: 88px;
   margin-bottom: 40px;
 `;
 
