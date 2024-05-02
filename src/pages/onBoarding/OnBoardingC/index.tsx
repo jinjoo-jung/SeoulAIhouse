@@ -23,13 +23,10 @@ const OnBoardingC = () => {
   };
 
   const handleComplete = (data: any) => {
+    console.log(data);
     setAddress(data.address);
     setIsModal(false);
   };
-
-  // useEffect(() => {
-  //   console.log(isOpen); // 이제 isOpen 상태 변경시마다 로그가 찍힘
-  // }, [isOpen]); // isOpen 상태가 변경될 때마다 이 효과를 실행
 
   return (
     <div>
