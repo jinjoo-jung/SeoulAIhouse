@@ -39,9 +39,16 @@ const OnBoardingB = () => {
   const handleClickNext = () => {
     navigate(`/onBoardingC`);
   };
+  const handleClickLogo = () => {
+    navigate(`/`);
+  };
   return (
     <div>
-      <MiniLogo src={homezMiniLogo} alt="homezMiniLogo" />
+      <MiniLogo
+        onClick={() => handleClickLogo()}
+        src={homezMiniLogo}
+        alt="homezMiniLogo"
+      />
       <OnBoardingBContainer>
         <MainText>
           집을 선택할 때, 가장 중요하게 보는 요소들을 선택해주세요.
@@ -66,6 +73,7 @@ export default OnBoardingB;
 
 const MiniLogo = styled.img`
   margin: 30px;
+  cursor: pointer;
 `;
 
 const OnBoardingBContainer = styled.div`

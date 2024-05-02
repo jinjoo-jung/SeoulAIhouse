@@ -16,9 +16,16 @@ const OnBoardingD = () => {
     navigate(`/TownRecommend`);
   };
 
+  const handleClickLogo = () => {
+    navigate(`/`);
+  };
   return (
     <div>
-      <MiniLogo src={homezMiniLogo} alt="homezMiniLogo" />
+      <MiniLogo
+        onClick={() => handleClickLogo()}
+        src={homezMiniLogo}
+        alt="homezMiniLogo"
+      />
       <OnBoardingBContainer>
         <MainText>선호하는 소요시간을 선택해주세요. </MainText>
         <ButtonContainer>
@@ -55,6 +62,7 @@ export default OnBoardingD;
 
 const MiniLogo = styled.img`
   margin: 30px;
+  cursor: pointer;
 `;
 
 const OnBoardingBContainer = styled.div`

@@ -1,11 +1,17 @@
 import React from 'react';
 import MiniLogo from '../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 const RecommendHeader = () => {
+  const navigate = useNavigate();
+  const handleClickLogo = () => {
+    navigate(`/`);
+  };
+
   return (
     <RecommendHeaderContainer>
-      <img src={MiniLogo} alt="mini-logo" />
+      <img onClick={() => handleClickLogo()} src={MiniLogo} alt="mini-logo" />
       <HeaderWrap>
         <HeaderText>000동 00로</HeaderText>
       </HeaderWrap>
@@ -26,6 +32,9 @@ const RecommendHeaderContainer = styled.div`
   justify-content: center;
   border-bottom: 1px solid #8c8c8c;
   z-index: 1;
+  img {
+    cursor: pointer;
+  }
 `;
 
 const HeaderWrap = styled.div`

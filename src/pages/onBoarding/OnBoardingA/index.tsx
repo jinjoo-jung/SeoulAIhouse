@@ -10,9 +10,18 @@ const OnBoardingA = () => {
   const handleClickStart = () => {
     navigate(`/onBoardingB`);
   };
+
+  const handleClickLogo = () => {
+    navigate(`/`);
+  };
+
   return (
     <OnBoardingAContainer>
-      <LogoImg src={homezLogo} alt="homezlogo" />
+      <LogoImg
+        onClick={() => handleClickLogo()}
+        src={homezLogo}
+        alt="homezlogo"
+      />
       <MainText>구해줘 홈즈를 통해 자신에게 맞는 동네를 추천받고,</MainText>
       <MainText>그에 맞는 매물을 확인해보세요!</MainText>
       <StartButton onClick={() => handleClickStart()}>시작하기</StartButton>
@@ -34,6 +43,7 @@ const OnBoardingAContainer = styled.div`
 
 const LogoImg = styled.img`
   margin-bottom: 80px;
+  cursor: pointer;
 `;
 
 const MainText = styled.div`

@@ -13,6 +13,10 @@ const OnBoardingC = () => {
     navigate(`/onBoardingD`);
   };
 
+  const handleClickLogo = () => {
+    navigate(`/`);
+  };
+
   const handleInputClick = () => {
     setIsModal((prev) => !prev);
     console.log(isModal);
@@ -29,7 +33,11 @@ const OnBoardingC = () => {
 
   return (
     <div>
-      <MiniLogo src={homezMiniLogo} alt="homezMiniLogo" />
+      <MiniLogo
+        onClick={() => handleClickLogo()}
+        src={homezMiniLogo}
+        alt="homezMiniLogo"
+      />
       <OnBoardingBContainer>
         <MainText>직장이나 학교 주소를 입력해주세요.</MainText>
         {isModal && (
@@ -54,6 +62,7 @@ export default OnBoardingC;
 
 const MiniLogo = styled.img`
   margin: 30px;
+  cursor: pointer;
 `;
 
 const OnBoardingBContainer = styled.div`
