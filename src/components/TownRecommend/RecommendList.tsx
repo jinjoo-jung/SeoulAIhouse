@@ -12,70 +12,88 @@ const RecommendList = () => {
         <img src={Clock} alt="clock" />
         <div>0분 ~ 60분</div>
       </TimeWrap>
-      <ScrollContainer>
-        <img src={leftCicleIcon} alt="leftCircle" />
-        <RecommendCommonWrap>
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-        </RecommendCommonWrap>
-        <img src={rightCicleIcon} alt="rightCicleIcon" />
-      </ScrollContainer>
+      <ArrowAndScrollContainer>
+        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <ScrollContainer>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </ScrollContainer>
+        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+      </ArrowAndScrollContainer>
       <Divider />
       <TimeWrap>
         <img src={Clock} alt="clock" />
         <div>0분 ~ 30분</div>
       </TimeWrap>
-      <ScrollContainer>
-        <RecommendCommonWrap>
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-        </RecommendCommonWrap>
-      </ScrollContainer>
+      <ArrowAndScrollContainer>
+        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <ScrollContainer>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </ScrollContainer>
+        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+      </ArrowAndScrollContainer>
       <TimeWrap>
         <img src={Clock} alt="clock" />
         <div>30분 ~ 60분</div>
       </TimeWrap>
-      <ScrollContainer>
-        <RecommendCommonWrap>
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-        </RecommendCommonWrap>
-      </ScrollContainer>
+      <ArrowAndScrollContainer>
+        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <ScrollContainer>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </ScrollContainer>
+        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+      </ArrowAndScrollContainer>
       <TimeWrap>
         <img src={Clock} alt="clock" />
         <div>60분 ~ 90분</div>
       </TimeWrap>
-      <ScrollContainer>
-        <RecommendCommonWrap>
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-        </RecommendCommonWrap>
-      </ScrollContainer>
+      <ArrowAndScrollContainer>
+        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <ScrollContainer>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </ScrollContainer>
+        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+      </ArrowAndScrollContainer>
       <TimeWrap>
         <img src={Clock} alt="clock" />
         <div>90분 이상</div>
       </TimeWrap>
-      <ScrollContainer>
-        <RecommendCommonWrap>
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-          <RecommendCommon />
-        </RecommendCommonWrap>
-      </ScrollContainer>
+      <ArrowAndScrollContainer>
+        <LeftIconImg src={leftCicleIcon} alt="leftCircle" />
+        <ScrollContainer>
+          <RecommendCommonWrap>
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+            <RecommendCommon />
+          </RecommendCommonWrap>
+        </ScrollContainer>
+        <RightIconImg src={rightCicleIcon} alt="rightCicleIcon" />
+      </ArrowAndScrollContainer>
     </RecommendListContainer>
   );
 };
@@ -106,10 +124,35 @@ const TimeWrap = styled.div`
   }
 `;
 const ScrollContainer = styled.div`
+  position: relative;
   overflow-x: auto; // 가로 스크롤 가능하게 설정
   -ms-overflow-style: none; // IE와 Edge 스크롤바 숨김
   scrollbar-width: none; // Firefox 스크롤바 숨김
   padding-left: 220px;
+`;
+
+const ArrowAndScrollContainer = styled.div`
+  position: relative; // 화살표들을 이 컨테이너에 대해 절대 위치
+  display: flex;
+  align-items: center;
+`;
+
+const LeftIconImg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 250px;
+  margin-top: 110px;
+  z-index: 1;
+`;
+
+const RightIconImg = styled.img`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 190px;
+  margin-top: 110px;
+  z-index: 1;
 `;
 
 const RecommendCommonWrap = styled.div`

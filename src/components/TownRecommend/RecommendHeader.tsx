@@ -31,7 +31,7 @@ const RecommendHeaderContainer = styled.div`
   background-color: white;
   justify-content: center;
   border-bottom: 1px solid #8c8c8c;
-  z-index: 1;
+  z-index: 10;
   img {
     cursor: pointer;
   }
