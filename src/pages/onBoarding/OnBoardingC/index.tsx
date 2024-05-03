@@ -3,7 +3,7 @@ import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import DaumPostcode from 'react-daum-postcode';
-import { isYieldExpression } from 'typescript';
+import getAddressStation from '../../../api/station';
 
 declare global {
   interface Window {
@@ -11,11 +11,23 @@ declare global {
   }
 }
 
+interface Coords {
+  x: number;
+  y: number;
+}
+
+interface InputStyleProps {
+  error: boolean;
+}
+
 const OnBoardingC = () => {
   const [isModal, setIsModal] = useState(false);
   const [address, setAddress] = useState('');
-  const [coords, setCoords] = useState({ x: '', y: '' });
+  const [coords, setCoords] = useState<Coords | null>(null);
   const navigate = useNavigate();
+  const [isValid, setIsValid] = useState(false);
+  const [isValidErrorMessage, setIsValidErrorMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleClickNext = () => {
     navigate(`/onBoardingD`);
@@ -27,8 +39,32 @@ const OnBoardingC = () => {
 
   const handleInputClick = () => {
     setIsModal((prev) => !prev);
-    console.log(isModal);
   };
+
+  // 주소 주변 역 조회 함수
+  const addressStation = async () => {
+    if (coords) {
+      console.log(coords.x, coords.y);
+      try {
+        const response = await getAddressStation(coords);
+        if (response?.isSuccess) {
+          setIsValid(true);
+          setIsValidErrorMessage(false);
+        }
+      } catch (error) {
+        setIsValid(false);
+        setIsValidErrorMessage(true);
+        console.log(error);
+        setErrorMessage(
+          '죄송합니다. 지원하지 않는 위치입니다. 현재 1km 내 서울 1~9호선 지하철역이 있는 경우에만 서비스를 제공중입니다.',
+        );
+      }
+    }
+  };
+
+  useEffect(() => {
+    addressStation();
+  }, [coords]);
 
   const handleComplete = (data: { address: string }) => {
     console.log(data);
@@ -44,18 +80,9 @@ const OnBoardingC = () => {
           x: result.x,
           y: result.y,
         });
-        console.log(coords.x, coords.y);
-        console.log(status);
-        // 서버로 x, y 좌표 전송하는 로직 추가
       }
     });
   };
-  useEffect(() => {
-    if (coords.x !== '' && coords.y !== '') {
-      console.log(address, 'x:', coords.x, 'y:', coords.y);
-      // 서버로 좌표를 전송하는 로직을 여기에 추가할 수 있습니다.
-    }
-  }, [coords, address]); // coords 상태가 변경될 때마다 실행됩니다.
 
   return (
     <div>
@@ -77,8 +104,14 @@ const OnBoardingC = () => {
           value={address}
           placeholder="ex) 00구 00동 00로, 000대학교"
           readOnly
+          error={isValidErrorMessage}
         />
-        <NextButton onClick={() => handleClickNext()}>다음</NextButton>
+        {isValidErrorMessage && (
+          <ErrorMessageText>{errorMessage}</ErrorMessageText>
+        )}
+        <NextButton onClick={() => handleClickNext()} disabled={!isValid}>
+          다음
+        </NextButton>
       </OnBoardingBContainer>
     </div>
   );
@@ -106,12 +139,13 @@ const MainText = styled.div`
   margin-bottom: 50px;
 `;
 
-const TextInput = styled.input`
+const TextInput = styled.input<InputStyleProps>`
+  position: relative;
   width: 1048px;
   height: 90px;
   border-radius: 20px;
-  border: 1px solid black;
-  font-size: 12px;
+  border: ${(props) => (props.error ? '2px' : '1px')} solid
+    ${(props) => (props.error ? 'red' : 'black')};
   font-size: 24px;
   padding-left: 20px;
   margin-top: 30px;
@@ -120,6 +154,15 @@ const TextInput = styled.input`
   ::placeholder {
     color: rgba(129, 129, 129, 0.4);
   }
+  &:focus {
+    outline: none; // 포커스 상태에서의 아웃라인 제거
+`;
+
+const ErrorMessageText = styled.div`
+  position: absolute;
+  font-size: 20px;
+  color: red;
+  margin-top: -20px;
 `;
 
 const NextButton = styled.button`
