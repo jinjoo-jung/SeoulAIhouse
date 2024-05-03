@@ -169,12 +169,11 @@ const NextButton = styled.button`
   width: 329px;
   height: 75px;
   color: white;
-  background-color: #005cab;
+  background-color: ${(props) => (props.disabled ? 'rgba(129, 129, 129, 0.4)' : '#005CAB')};
   font-size: 24px;
   font-weight: 500;
-
   border-radius: 20px;
-  margin-top: 50px;
+  margin-top: 50px;ß
   cursor: pointer;
 `;
 

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const OnBoardingD = () => {
   const navigate = useNavigate();
   const [preferTime, setPreferTime] = useState('');
+  const [isValid, setIsValid] = useState(false);
 
   const handleClickTimeButton = (preferTime: string) => {
     console.log(preferTime);
@@ -50,7 +51,7 @@ const OnBoardingD = () => {
             90분 이상
           </TimeButton>
         </ButtonContainer>
-        <NextButton onClick={() => handleClickNext()}>
+        <NextButton onClick={() => handleClickNext()} disabled={!isValid}>
           동네 추천 받으러 가기!
         </NextButton>
       </OnBoardingBContainer>
@@ -104,7 +105,8 @@ const NextButton = styled.button`
   width: 329px;
   height: 75px;
   color: white;
-  background-color: #005cab;
+  background-color: ${(props) =>
+    props.disabled ? 'rgba(129, 129, 129, 0.4)' : '#005CAB'};
   font-size: 24px;
   font-weight: 500;
 

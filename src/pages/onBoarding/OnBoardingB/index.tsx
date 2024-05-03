@@ -22,6 +22,7 @@ const OnBoardingB = () => {
   const navigate = useNavigate();
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
+  const [isValid, setIsValid] = useState(false);
 
   const handleSelectClick = (index: number) => {
     const label = options[index];
@@ -63,7 +64,9 @@ const OnBoardingB = () => {
             </ButtonItem>
           ))}
         </ButtonContainer>
-        <NextButton onClick={() => handleClickNext()}>다음</NextButton>
+        <NextButton onClick={() => handleClickNext()} disabled={!isValid}>
+          다음
+        </NextButton>
       </OnBoardingBContainer>
     </div>
   );
@@ -116,7 +119,8 @@ const NextButton = styled.button`
   width: 329px;
   height: 75px;
   color: white;
-  background-color: #005cab;
+  background-color: ${(props) =>
+    props.disabled ? 'rgba(129, 129, 129, 0.4)' : '#005CAB'};
   font-size: 24px;
   border-radius: 20px;
   margin-top: 50px;
