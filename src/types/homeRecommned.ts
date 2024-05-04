@@ -1,4 +1,4 @@
-export interface homeRecommendResponse {
+export interface HomeRecommendResponse {
   isSuccess: true;
   message: string;
   result: {
