@@ -30,6 +30,7 @@ const OnBoardingD = () => {
       station: station,
       timeRange: timeRange,
     };
+    console.log(onBoardingRequest);
 
     try {
       const response = await postOnboarding(onBoardingRequest);
