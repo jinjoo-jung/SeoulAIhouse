@@ -52,6 +52,7 @@ const OnBoardingC = () => {
           setIsValidErrorMessage(false);
         }
       } catch (error) {
+        ('');
         setIsValid(false);
         setIsValidErrorMessage(true);
         console.log(error);

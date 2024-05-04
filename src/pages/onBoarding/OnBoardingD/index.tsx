@@ -11,6 +11,7 @@ const OnBoardingD = () => {
   const handleClickTimeButton = (preferTime: string) => {
     console.log(preferTime);
     setPreferTime(preferTime);
+    setIsValid(true);
   };
 
   const handleClickNext = () => {
