@@ -10,7 +10,7 @@ const TownInfoHomeRecommend = () => {
     <div>
       <HomeWrap>
         <img src={likeIcon} alt="likeIcon" />
-        <div>매물 추천</div>
+        <div>00동 매물</div>
       </HomeWrap>
       <ArrowAndScrollContainer>
         <LeftIconImg src={leftCircleIcon} alt="leftCircle" />

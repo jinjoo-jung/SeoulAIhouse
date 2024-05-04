@@ -14,13 +14,13 @@ const TownInfoHomeItem = () => {
             <div>서울시 00구 00동</div>
           </InfoMapWrap>
         </div>
-        <InfoMapText>이화여대에서 도보 3분</InfoMapText>
         <div>
           <InfoMapWrap>
             <img src={miniHome} alt="miniHome" />
             <div>투룸 / 1층</div>
           </InfoMapWrap>
         </div>
+        <InfoMapText />
         <InfoWrap>
           <InfoItem>월세</InfoItem>
           <InfoItemPrice>80/500</InfoItemPrice>
@@ -49,7 +49,7 @@ const RecommendCommonWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 26px;
 `;
 
 const AreaText = styled.div`
@@ -69,10 +69,8 @@ const InfoMapWrap = styled.div`
 `;
 
 const InfoMapText = styled.div`
-  color: #0b9cdb;
-  font-size: 20px;
-  margin-left: 24px;
-  margin-top: -8px;
+  width: 238px;
+  border: 0.5px solid #8c8c8c;
 `;
 
 const InfoWrap = styled.div`

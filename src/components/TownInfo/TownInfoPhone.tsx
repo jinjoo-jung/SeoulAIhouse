@@ -9,7 +9,7 @@ const TownInfoPhone = () => {
     <div>
       <HomeWrap>
         <img src={likeIcon} alt="likeIcon" />
-        <div>공인중개사 추천</div>
+        <div>00동 공인중개사 목록</div>
       </HomeWrap>
       <PhoneContainer>
         <PhoneWrap>
