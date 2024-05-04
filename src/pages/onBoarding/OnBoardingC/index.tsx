@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import DaumPostcode from 'react-daum-postcode';
 import getAddressStation from '../../../api/station';
+import iconC1 from '.././../../assets/onBoardingC1.svg';
+import iconC2 from '.././../../assets/onBoardingC2.svg';
 
 declare global {
   interface Window {
@@ -28,6 +30,7 @@ const OnBoardingC = () => {
   const [isValid, setIsValid] = useState(false);
   const [isValidErrorMessage, setIsValidErrorMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [station, setStation] = useState('');
 
   const handleClickNext = () => {
     navigate(`/onBoardingD`);
@@ -50,9 +53,9 @@ const OnBoardingC = () => {
         if (response?.isSuccess) {
           setIsValid(true);
           setIsValidErrorMessage(false);
+          sessionStorage.setItem('station', response.result.station);
         }
       } catch (error) {
-        ('');
         setIsValid(false);
         setIsValidErrorMessage(true);
         console.log(error);
@@ -87,6 +90,8 @@ const OnBoardingC = () => {
 
   return (
     <div>
+      <IconC2 src={iconC2} alt="iconC2" />
+      <IconC1 src={iconC1} alt="iconC1" />
       <MiniLogo
         onClick={() => handleClickLogo()}
         src={homezMiniLogo}
@@ -119,6 +124,21 @@ const OnBoardingC = () => {
 };
 
 export default OnBoardingC;
+
+const IconC1 = styled.img`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+`;
+
+const IconC2 = styled.img`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 180px;
+  margin-left: 80px;
+`;
 
 const MiniLogo = styled.img`
   margin: 30px;

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import onBoardingBIcon from '../../../assets/onBoardingB.svg';
 
 const options = [
   '안전도',
@@ -21,21 +22,24 @@ const options = [
 const OnBoardingB = () => {
   const navigate = useNavigate();
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
-  const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
   const [isValid, setIsValid] = useState(false);
 
   const handleSelectClick = (index: number) => {
-    const label = options[index];
     if (selectedOptions.includes(index)) {
       setSelectedOptions(selectedOptions.filter((i) => i !== index));
-      setSelectedLabels(selectedLabels.filter((i) => i !== label));
-      console.log(selectedLabels);
     } else {
       setSelectedOptions([...selectedOptions, index]);
-      setSelectedLabels([...selectedLabels, label]);
-      console.log(selectedLabels);
     }
   };
+
+  useEffect(() => {
+    const selectedLabels = selectedOptions.map((index) => options[index]);
+    sessionStorage.setItem('selectedLabels', JSON.stringify(selectedLabels));
+    console.log(selectedLabels);
+    if (selectedOptions.length >= 3) {
+      setIsValid(true);
+    }
+  }, [selectedOptions]);
 
   const handleClickNext = () => {
     navigate(`/onBoardingC`);
@@ -45,6 +49,7 @@ const OnBoardingB = () => {
   };
   return (
     <div>
+      <PageStyleIcon src={onBoardingBIcon} alt="onBoardingBIcon" />
       <MiniLogo
         onClick={() => handleClickLogo()}
         src={homezMiniLogo}
@@ -54,6 +59,7 @@ const OnBoardingB = () => {
         <MainText>
           집을 선택할 때, 가장 중요하게 보는 요소들을 선택해주세요.
         </MainText>
+        <SubText>최소 3개 이상 선택해주세요. </SubText>
         <ButtonContainer>
           {options.map((label, index) => (
             <ButtonItem
@@ -74,6 +80,12 @@ const OnBoardingB = () => {
 
 export default OnBoardingB;
 
+const PageStyleIcon = styled.img`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+`;
+
 const MiniLogo = styled.img`
   margin: 30px;
   cursor: pointer;
@@ -90,8 +102,13 @@ const MainText = styled.div`
   font-size: 32px;
   margin: 8px;
   font-weight: bold;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin-top: 24px;
+  margin-bottom: 20px;
+`;
+
+const SubText = styled.div`
+  margin-bottom: 16px;
+  font-size: 20px;
 `;
 
 const ButtonContainer = styled.div`

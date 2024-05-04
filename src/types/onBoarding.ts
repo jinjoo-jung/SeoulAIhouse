@@ -1,7 +1,7 @@
 export interface OnBoardingRequest {
   factors: string[];
-  station: string;
-  timeRange: string;
+  station: string | null;
+  timeRange: string | null;
 }
 
 export interface OnBoardingResponse {
