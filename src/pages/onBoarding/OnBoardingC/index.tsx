@@ -3,7 +3,7 @@ import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import DaumPostcode from 'react-daum-postcode';
-import getAddressStation from '../../../api/station';
+import getAddressStation from '../../../api/getStation';
 import iconC1 from '.././../../assets/onBoardingC1.svg';
 import iconC2 from '.././../../assets/onBoardingC2.svg';
 

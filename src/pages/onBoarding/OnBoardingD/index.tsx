@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
-import postOnboarding from '../../../api/onBoarding';
+import postOnboarding from '../../../api/postOnBoarding';
 import iconD1 from '../../../assets/onBoardingD1.svg';
 import iconD2 from '../../../assets/onBoardingD2.svg';
 
