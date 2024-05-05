@@ -9,6 +9,10 @@ const RecommendHeader = () => {
     navigate(`/`);
   };
 
+  const hanldeMapClick = () => {
+    navigate(`/map`);
+  };
+
   return (
     <RecommendHeaderContainer>
       <img onClick={() => handleClickLogo()} src={MiniLogo} alt="mini-logo" />
@@ -16,6 +20,9 @@ const RecommendHeader = () => {
         <HeaderText>000동 00로</HeaderText>
       </HeaderWrap>
       <RecommendChange>변경하기</RecommendChange>
+      <MapMoveText onClick={() => hanldeMapClick()}>
+        전월세/이동시간 맞춤 지도 바로가기
+      </MapMoveText>
     </RecommendHeaderContainer>
   );
 };
@@ -38,7 +45,7 @@ const RecommendHeaderContainer = styled.div`
 `;
 
 const HeaderWrap = styled.div`
-  width: 754px;
+  width: 700px;
   height: 67px;
   border-radius: 20px;
   border: 1px solid #060606;
@@ -62,6 +69,14 @@ const RecommendChange = styled.button`
   font-weight: bold;
   background-color: #005cab;
   border-radius: 20px;
-  margin-left: 730px;
+  margin-left: 300px;
+  cursor: pointer;
+`;
+
+const MapMoveText = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  color: #005cab;
+  margin-left: 50px;
   cursor: pointer;
 `;
