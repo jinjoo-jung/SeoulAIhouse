@@ -1,4 +1,8 @@
 export interface OnBoardingRequest {
+  // sex: string;
+  // age: number;
+  // workDay: string;
+  // arrivalTime: number;
   factors: string[];
   station: string | null;
   timeRange: string | null;

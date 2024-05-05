@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,7 @@ const OnBoardingC = () => {
   const [isValid, setIsValid] = useState(false);
   const [isValidErrorMessage, setIsValidErrorMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const modalRef = useRef(null);
   const [station, setStation] = useState('');
 
   const handleClickNext = () => {
@@ -43,6 +44,17 @@ const OnBoardingC = () => {
   const handleInputClick = () => {
     setIsModal((prev) => !prev);
   };
+
+  // const closeModal = (e: MouseEvent) => {
+  //   if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+  //     setIsModal(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   document.addEventListener('mousedown', closeModal);
+  //   return () => document.removeEventListener('mousedown', closeModal);
+  // }, []);
 
   // 주소 주변 역 조회 함수
   const addressStation = async () => {
@@ -100,7 +112,7 @@ const OnBoardingC = () => {
       <OnBoardingBContainer>
         <MainText>직장이나 학교 주소를 입력해주세요.</MainText>
         {isModal && (
-          <Modal>
+          <Modal ref={modalRef}>
             <DaumPostcode onComplete={handleComplete} />
           </Modal>
         )}

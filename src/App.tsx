@@ -9,6 +9,7 @@ import reset from './styles/reset';
 import OnBoardingB from './pages/onBoarding/OnBoardingB';
 import OnBoardingD from './pages/onBoarding/OnBoardingD';
 import OnBoardingC from './pages/onBoarding/OnBoardingC';
+import OnBoardingE from './pages/onBoarding/OnBoardingE';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/onBoardingB" element={<OnBoardingB />} />
           <Route path="/onBoardingC" element={<OnBoardingC />} />
           <Route path="/onBoardingD" element={<OnBoardingD />} />
+          <Route path="/onBoardingE" element={<OnBoardingE />} />
           <Route path="/townRecommend" element={<TownRecommend />} />
           <Route path="/townInfo" element={<TownInfo />} />
         </Routes>

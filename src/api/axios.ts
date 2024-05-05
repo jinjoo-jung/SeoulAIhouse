@@ -26,8 +26,8 @@ instance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    if (error.response.status === 404) {
-      const code = error.response.data.response_code;
+    if (error) {
+      const code = error.response;
       console.log('response_code:', code);
 
       return Promise.reject(code);
