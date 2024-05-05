@@ -8,7 +8,7 @@ const OnBoardingA = () => {
   const navigate = useNavigate();
 
   const handleClickStart = () => {
-    navigate(`/onBoardingB`);
+    navigate(`/onBoardingE`);
   };
 
   const handleClickLogo = () => {

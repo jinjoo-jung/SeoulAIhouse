@@ -23,12 +23,25 @@ const OnBoardingD = () => {
     const factors = factorsStorage ? JSON.parse(factorsStorage) : []; // `null`이면 빈 배열
     const station = sessionStorage.getItem('station');
     const timeRange = sessionStorage.getItem('preferTime');
+    const sex = sessionStorage.getItem('sex');
+    const workDay = sessionStorage.getItem('workDay');
+
+    const ageString = sessionStorage.getItem('age');
+    const arrivalTimeString = sessionStorage.getItem('arrivalTime');
+
+    // 문자열을 숫자로 변환
+    const age = ageString ? parseInt(ageString) : null;
+    const arrivalTime = arrivalTimeString ? parseInt(arrivalTimeString) : null;
 
     // 요청 객체
     const onBoardingRequest = {
       factors: factors,
       station: station,
       timeRange: timeRange,
+      sex: sex,
+      age: age,
+      arrivalTime: arrivalTime,
+      workDay: workDay,
     };
     console.log(onBoardingRequest);
 

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import iconE from '../../../assets/onBoardingE.svg';
 
 const OnBoardingE = () => {
   const navigate = useNavigate();
-  const [sex, setSex] = useState;
-
+  const [sex, setSex] = useState('');
+  const [age, setAge] = useState<number | null>(null);
+  const [workDay, setWorkDay] = useState('');
+  const [arrivalTime, setArrivalTime] = useState<number | null>(null);
   const [isValid, setIsValid] = useState(false);
 
   const handleClickNext = () => {
@@ -15,8 +18,43 @@ const OnBoardingE = () => {
   const handleClickLogo = () => {
     navigate(`/`);
   };
+
+  const handleSexClick = (sex: string) => {
+    setSex(sex);
+    sessionStorage.setItem('sex', sex);
+  };
+
+  const handleWorkDayClick = (workDay: string) => {
+    setWorkDay(workDay);
+    sessionStorage.setItem('workDay', workDay);
+  };
+
+  const handleAgeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const ageValue = parseInt(e.target.value, 10);
+    setAge(ageValue);
+    if (ageValue) {
+      sessionStorage.setItem('age', e.target.value);
+    }
+  };
+
+  const handleArrivalTime = (e: ChangeEvent<HTMLInputElement>) => {
+    const arrivalTimeValue = parseInt(e.target.value, 10);
+    setArrivalTime(arrivalTimeValue);
+    sessionStorage.setItem('arrivalTime', e.target.value);
+  };
+
+  useEffect(() => {
+    const validateForm = () => {
+      return (
+        sex !== '' && age !== null && workDay !== '' && arrivalTime !== null
+      );
+    };
+    setIsValid(validateForm());
+  }, [age, sex, arrivalTime, workDay]);
+
   return (
     <OnBoardingContainer>
+      <IconE src={iconE} alt="IconE" />
       <MiniLogo
         onClick={() => handleClickLogo()}
         src={homezMiniLogo}
@@ -25,19 +63,42 @@ const OnBoardingE = () => {
       <OnBoardingBContainer>
         <OnBoardingEWrap>
           <ElementText>성별</ElementText>
-          <div>
-            <button>남자</button>
-            <button>여자</button>
-          </div>
+          <Buttonwrap>
+            <ButtonStyle
+              isClicked={sex === 'MALE'}
+              onClick={() => handleSexClick('MALE')}>
+              남자
+            </ButtonStyle>
+            <ButtonStyle
+              isClicked={sex === 'FEMALE'}
+              onClick={() => handleSexClick('FEMALE')}>
+              여자
+            </ButtonStyle>
+          </Buttonwrap>
           <ElementText>나이</ElementText>
-          <input type="text" placeholder="나이를 입력해주세요." />
+          <AgeInput
+            value={age || ''}
+            onChange={handleAgeChange}
+            type="number"
+            placeholder="나이를 입력해주세요."
+          />
           <ElementText>출근</ElementText>
-          <div>
-            <button>평일</button>
-            <button>주말</button>
-          </div>
+          <Buttonwrap>
+            <ButtonStyle
+              isClicked={workDay === 'WEEKDAY'}
+              onClick={() => handleWorkDayClick('WEEKDAY')}>
+              평일
+            </ButtonStyle>
+            <ButtonStyle
+              isClicked={workDay === 'WEEKEND'}
+              onClick={() => handleWorkDayClick('WEEKEND')}>
+              주말
+            </ButtonStyle>
+          </Buttonwrap>
           <ElementText>도착 시간</ElementText>
-          <input
+          <AgeInput
+            value={arrivalTime || ''}
+            onChange={handleArrivalTime}
             type="text"
             placeholder="학교나 직장에 도착해야 하는 시간을 입력해주세요."
           />
@@ -62,6 +123,12 @@ const OnBoardingContainer = styled.div`
   overflow: scroll-y;
 `;
 
+const IconE = styled.img`
+  position: absolute;
+  right: 0;
+  top: 0;
+`;
+
 const OnBoardingBContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,11 +139,52 @@ const OnBoardingBContainer = styled.div`
 const OnBoardingEWrap = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 24px;
+  height: 800px;
+  margin-top: 50px;
+  margin-right: 350px;
 `;
 
 const ElementText = styled.div`
   font-size: 32px;
   font-weight: bold;
+`;
+
+const Buttonwrap = styled.div`
+  display: flex;
+  gap: 28px;
+  margin-bottom: 40px;
+`;
+
+const ButtonStyle = styled.button<{ isClicked: boolean }>`
+  width: 239.5px;
+  height: 65px;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: 500;
+  color: ${(props) => (props.isClicked ? '#0B9CDB' : '#8c8c8c')};
+  border: ${(props) => (props.isClicked ? '3px' : '1px')} solid
+    ${(props) => (props.isClicked ? '#0B9CDB' : '#8c8c8c')};
+  background-color: transparent;
+  margin: 10px 0px;
+  cursor: pointer;
+`;
+
+const AgeInput = styled.input`
+  width: 702px;
+  height: 66px;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-size:24px;
+  padding-left:20px;
+  margin-bottom: 40px;
+
+
+  ::placeholder {
+    color: rgba(129, 129, 129, 0.4);
+  }
+  &:focus {
+    outline: none; // 포커스 상태에서의 아웃라인 제거
 `;
 
 const NextButton = styled.button`
@@ -87,7 +195,8 @@ const NextButton = styled.button`
     props.disabled ? 'rgba(129, 129, 129, 0.4)' : '#005CAB'};
   font-size: 24px;
   border-radius: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 50px;
   cursor: pointer;
   font-weight: 500;
 `;
