@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import mapIcon from '../../assets/mapIcon.svg';
 import styled from '@emotion/styled';
-import mapRightIcon from '../../assets/mapRight.svg';
 import smileIcon from '../../assets/smileA.svg';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,8 +9,7 @@ declare global {
   }
 }
 
-const TownInfoMap = () => {
-  const navigate = useNavigate();
+const Map = () => {
   const { kakao } = window;
   const mapContainer = useRef(null);
 
@@ -62,27 +59,14 @@ const TownInfoMap = () => {
     });
   });
 
-  const handleClickMap = () => {
-    navigate(`/map`);
-  };
-
   return (
     <div>
-      <HomeWrap>
-        <img src={mapIcon} alt="mapIcon" />
-        <div>지도</div>
-        <img
-          onClick={() => handleClickMap()}
-          src={mapRightIcon}
-          alt="mapRightIcon"
-        />
-      </HomeWrap>
       <div
         id="map"
         ref={mapContainer}
         style={{
-          width: '1048px',
-          height: '533px',
+          width: '100vw',
+          height: '100vh',
           display: 'block',
           zIndex: '1',
         }}></div>
@@ -90,7 +74,7 @@ const TownInfoMap = () => {
   );
 };
 
-export default TownInfoMap;
+export default Map;
 
 const HomeWrap = styled.div`
   position: sticky;

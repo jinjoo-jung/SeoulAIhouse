@@ -10,6 +10,7 @@ import OnBoardingB from './pages/onBoarding/OnBoardingB';
 import OnBoardingD from './pages/onBoarding/OnBoardingD';
 import OnBoardingC from './pages/onBoarding/OnBoardingC';
 import OnBoardingE from './pages/onBoarding/OnBoardingE';
+import Map from './pages/map';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/onBoardingD" element={<OnBoardingD />} />
           <Route path="/onBoardingE" element={<OnBoardingE />} />
           <Route path="/townRecommend" element={<TownRecommend />} />
+          <Route path="map" element={<Map />} />
           <Route path="/townInfo" element={<TownInfo />} />
         </Routes>
       </BrowserRouter>
