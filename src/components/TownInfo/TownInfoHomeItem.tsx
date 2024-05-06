@@ -17,7 +17,8 @@ const TownInfoHomeItem = () => {
         <div>
           <InfoMapWrap>
             <img src={miniHome} alt="miniHome" />
-            <div>투룸 / 1층</div>
+            <div>면적:</div>
+            <div>24m²</div>
           </InfoMapWrap>
         </div>
         <InfoMapText />
