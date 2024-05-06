@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
+  withCredentials: true, // 여기에 추가
 });
 
 instance.interceptors.request.use(
@@ -27,10 +28,10 @@ instance.interceptors.response.use(
   },
   async (error) => {
     if (error) {
-      const code = error.response;
-      console.log('response_code:', code);
+      // const code = error.response;
+      console.log('response_code:', error);
 
-      return Promise.reject(code);
+      return Promise.reject(error);
     }
 
     return Promise.reject(error);
