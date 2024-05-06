@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  withCredentials: true, // 여기에 추가
 });
 
 instance.interceptors.request.use(
