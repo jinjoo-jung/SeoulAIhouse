@@ -10,8 +10,7 @@ const getHomeRecommend = async (
 ): Promise<HomeRecommendResponse | null> => {
   try {
     const response = await instance.get(`/api/report/property?town=${town}`);
-    // const modifiedData = transformData(response.data);
-    // return modifiedData;
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);

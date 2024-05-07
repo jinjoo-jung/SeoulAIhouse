@@ -10,6 +10,7 @@ interface HomeRecommendItemProps {
 
 const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   console.log(property);
+
   return (
     <RecommendCommonContainer>
       <RecommendCommonWrap>

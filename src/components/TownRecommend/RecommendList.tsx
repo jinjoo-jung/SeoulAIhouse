@@ -7,12 +7,6 @@ import rightCircleIcon from '../../assets/rightCircle.svg';
 import { useNavigate } from 'react-router-dom';
 
 const RecommendList = () => {
-  const navigate = useNavigate();
-
-  const handleRecommendClick = () => {
-    navigate('/towninfo');
-  };
-
   return (
     <RecommendListContainer>
       <TimeWrap>

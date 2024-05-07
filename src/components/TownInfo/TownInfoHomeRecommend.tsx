@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import TownInoHomeItem from './TownInfoHomeItem';
+import TownInfoHomeItem from './TownInfoHomeItem';
 import likeIcon from '../../assets/LikeIcon.svg';
 import styled from '@emotion/styled';
 import leftCircleIcon from '../../assets/leftCircle.svg';
@@ -14,7 +14,7 @@ const TownInfoHomeRecommend = () => {
 
   const homeRecommend = async () => {
     try {
-      const homeRecommendResponse = await getHomeRecommend('목동');
+      const homeRecommendResponse = await getHomeRecommend('대흥동');
       if (
         homeRecommendResponse &&
         homeRecommendResponse.result &&
@@ -42,7 +42,7 @@ const TownInfoHomeRecommend = () => {
         <ScrollContainer>
           <RecommendCommonWrap>
             {properties.map((property) => (
-              <TownInoHomeItem key={property.name} property={property} />
+              <TownInfoHomeItem key={property.name} property={property} />
             ))}
           </RecommendCommonWrap>
         </ScrollContainer>
