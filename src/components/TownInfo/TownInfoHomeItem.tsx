@@ -11,31 +11,82 @@ interface HomeRecommendItemProps {
 const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   console.log(property);
 
+  const calculateArea = (area: number, floor: number) => {
+    return area / floor;
+  };
+
+  const formatMoney = (value: number) => {
+    if (value >= 10000) {
+      const billions = Math.floor(value / 10000);
+      const rest = value % 10000;
+      return `${billions}억${rest > 0 ? ` ${rest}만원` : '원'}`;
+    }
+    return `${value}만원`;
+  };
+
+  const getRentDisplay = (
+    rentType: string,
+    rental: number,
+    deposit: number,
+  ) => {
+    switch (rentType) {
+      case 'MONTH':
+        return `${formatMoney(rental)}/${formatMoney(deposit)}`;
+      default:
+        return '0';
+    }
+  };
+
+  const getRentLumpDisplay = (
+    rentType: string,
+    rental: number,
+    deposit: number,
+  ) => {
+    switch (rentType) {
+      case 'LUMP':
+        return `${formatMoney(deposit)}`;
+      default:
+        return '0';
+    }
+  };
+
+  const rentMonthDisplay = getRentDisplay(
+    property.rentType,
+    property.rental,
+    property.deposit,
+  );
+
+  const rentLumpDisplay = getRentLumpDisplay(
+    property.rentType,
+    property.rental,
+    property.deposit,
+  );
+
   return (
     <RecommendCommonContainer>
       <RecommendCommonWrap>
-        <AreaText>000아파트</AreaText>
+        <AreaText>{property.name}</AreaText>
         <div>
           <InfoMapWrap>
             <img src={miniMap} alt="miniMap" />
-            <div>서울시 00구 00동</div>
+            <div>{property.address}</div>
           </InfoMapWrap>
         </div>
         <div>
           <InfoMapWrap>
             <img src={miniHome} alt="miniHome" />
             <div>면적:</div>
-            <div>24m²</div>
+            <div>{calculateArea(property.area, property.floor)}m²</div>
           </InfoMapWrap>
         </div>
         <InfoMapText />
         <InfoWrap>
           <InfoItem>월세</InfoItem>
-          <InfoItemPrice>80/500</InfoItemPrice>
+          <InfoItemPrice>{rentMonthDisplay}</InfoItemPrice>
         </InfoWrap>
         <InfoWrap>
           <InfoItem>전세</InfoItem>
-          <InfoItemPrice>80/500</InfoItemPrice>
+          <InfoItemPrice>{rentLumpDisplay}</InfoItemPrice>
         </InfoWrap>
       </RecommendCommonWrap>
     </RecommendCommonContainer>

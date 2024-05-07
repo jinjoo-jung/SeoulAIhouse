@@ -7,7 +7,7 @@ const RecommendCommon = () => {
   const navigate = useNavigate();
 
   const handleRecommendClick = () => {
-    navigate('/towninfo');
+    navigate('/townInfo');
   };
 
   return (

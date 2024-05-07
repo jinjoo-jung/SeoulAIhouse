@@ -9,8 +9,11 @@ instance.interceptors.request.use(
     const accessToken = sessionStorage.getItem('accessToken');
     console.log(accessToken);
 
+    if (accessToken) {
+      config.headers['Authorization'] = `Bearer ${accessToken}`;
+    }
     config.headers['Content-Type'] = 'application/json';
-    config.headers.Authorization = `Bearer ${accessToken}`;
+    // config.headers.Authorization = `Bearer ${accessToken}`;
     config.headers.Accept = 'application/json';
 
     return config;
