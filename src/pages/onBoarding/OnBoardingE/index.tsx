@@ -11,6 +11,8 @@ const OnBoardingE = () => {
   const [workDay, setWorkDay] = useState('');
   const [arrivalTime, setArrivalTime] = useState<number | null>(null);
   const [isValid, setIsValid] = useState(false);
+  const [isValidAge, setIsValidAge] = useState(false);
+  const [isValidArrivalTime, setIsValidArrivalTime] = useState(false);
 
   const handleClickNext = () => {
     navigate(`/onBoardingB`);
@@ -31,16 +33,26 @@ const OnBoardingE = () => {
 
   const handleAgeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const ageValue = parseInt(e.target.value, 10);
-    setAge(ageValue);
-    if (ageValue) {
+    if (ageValue >= 18 && ageValue <= 40) {
+      setAge(ageValue);
+      setIsValidAge(false); // 유효성 검사 통과
       sessionStorage.setItem('age', e.target.value);
+    } else {
+      setAge(ageValue); // 여전히 값을 설정하지만 유효하지 않음
+      setIsValidAge(true); // 유효하지 않다고 표시
     }
   };
 
   const handleArrivalTime = (e: ChangeEvent<HTMLInputElement>) => {
     const arrivalTimeValue = parseInt(e.target.value, 10);
-    setArrivalTime(arrivalTimeValue);
-    sessionStorage.setItem('arrivalTime', e.target.value);
+    if (arrivalTimeValue >= 0 && arrivalTimeValue <= 23) {
+      setArrivalTime(arrivalTimeValue);
+      setIsValidArrivalTime(false);
+      sessionStorage.setItem('arrivalTime', e.target.value);
+    } else {
+      setArrivalTime(arrivalTimeValue);
+      setIsValidArrivalTime(true);
+    }
   };
 
   useEffect(() => {
@@ -82,6 +94,11 @@ const OnBoardingE = () => {
             type="number"
             placeholder="나이를 입력해주세요."
           />
+          {isValidAge && (
+            <ValidationText>
+              18 ~ 40세 사이의 숫자를 입력 해주세요.
+            </ValidationText>
+          )}
           <ElementText>출근</ElementText>
           <Buttonwrap>
             <ButtonStyle
@@ -99,9 +116,15 @@ const OnBoardingE = () => {
           <AgeInput
             value={arrivalTime || ''}
             onChange={handleArrivalTime}
-            type="text"
+            type="number"
             placeholder="학교나 직장에 도착해야 하는 시간을 입력해주세요."
           />
+
+          {isValidArrivalTime && (
+            <ValidationText>
+              학교나 직장에 도착해야 하는 시간을 입력해주세요.
+            </ValidationText>
+          )}
         </OnBoardingEWrap>
         <NextButton onClick={() => handleClickNext()} disabled={!isValid}>
           다음
@@ -199,4 +222,11 @@ const NextButton = styled.button`
   margin-bottom: 50px;
   cursor: pointer;
   font-weight: 500;
+`;
+
+const ValidationText = styled.div`
+  margin-top: -50px;
+  margin-left: 10px;
+  font-size: 16px;
+  color: red;
 `;
