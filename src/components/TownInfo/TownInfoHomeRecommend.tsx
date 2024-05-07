@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TownInoHomeItem from './TownInfoHomeItem';
 import likeIcon from '../../assets/LikeIcon.svg';
 import styled from '@emotion/styled';
 import leftCircleIcon from '../../assets/leftCircle.svg';
 import rightCircleIcon from '../../assets/rightCircle.svg';
+import getHomeRecommend from '../../api/getHomeRecommend';
+import { HomeRecommendPropertyResponse } from '../../types/homeRecommned';
 
 const TownInfoHomeRecommend = () => {
+  const [properties, setProperties] = useState<HomeRecommendPropertyResponse[]>(
+    [],
+  );
+
+  const homeRecommend = async () => {
+    try {
+      const homeRecommendResponse = await getHomeRecommend('목동');
+      if (
+        homeRecommendResponse &&
+        homeRecommendResponse.result &&
+        homeRecommendResponse.result.properties
+      ) {
+        setProperties(homeRecommendResponse?.result.properties);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    homeRecommend();
+  }, []);
+
   return (
     <div>
       <HomeWrap>
@@ -16,13 +41,9 @@ const TownInfoHomeRecommend = () => {
         <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
-            <TownInoHomeItem />
-            <TownInoHomeItem />
-            <TownInoHomeItem />
-            <TownInoHomeItem />
-            <TownInoHomeItem />
-            <TownInoHomeItem />
-            <TownInoHomeItem />
+            {properties.map((property) => (
+              <TownInoHomeItem key={property.name} property={property} />
+            ))}
           </RecommendCommonWrap>
         </ScrollContainer>
         <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />

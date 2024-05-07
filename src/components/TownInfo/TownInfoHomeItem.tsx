@@ -2,8 +2,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 import miniHome from '../../assets/miniHome.svg';
 import miniMap from '../../assets/miniMap.svg';
+import { HomeRecommendPropertyResponse } from '../../types/homeRecommned';
 
-const TownInfoHomeItem = () => {
+interface HomeRecommendItemProps {
+  property: HomeRecommendPropertyResponse;
+}
+
+const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
+  console.log(property);
   return (
     <RecommendCommonContainer>
       <RecommendCommonWrap>
