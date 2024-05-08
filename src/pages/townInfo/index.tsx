@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 
 const TownInfo = () => {
   const location = useLocation();
-  const townName = location.state.townName;
+  const townName = location.state?.townName;
   console.log(townName);
 
   return (
