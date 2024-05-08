@@ -31,72 +31,19 @@ const TownInfoPhone = () => {
         <div>00동 공인중개사 목록</div>
       </HomeWrap>
       <PhoneContainer>
-        <PhoneWrap>
-          <PhoneName>000중개사</PhoneName>
-          <PhoneItemWrap>
-            <img src={phoneIcon} alt="phoneICon" />
-            <div>02 - 0000 - 0000</div>
-          </PhoneItemWrap>
-          <PhoneItemWrap>
-            <img src={mapA} alt="mapA" />
-            <div>000시 000구 000로</div>
-          </PhoneItemWrap>
-        </PhoneWrap>
-        <PhoneWrap>
-          <PhoneName>000중개사</PhoneName>
-          <PhoneItemWrap>
-            <img src={phoneIcon} alt="phoneICon" />
-            <div>02 - 0000 - 0000</div>
-          </PhoneItemWrap>
-          <PhoneItemWrap>
-            <img src={mapA} alt="mapA" />
-            <div>000시 000구 000로</div>
-          </PhoneItemWrap>
-        </PhoneWrap>
-        <PhoneWrap>
-          <PhoneName>000중개사</PhoneName>
-          <PhoneItemWrap>
-            <img src={phoneIcon} alt="phoneICon" />
-            <div>02 - 0000 - 0000</div>
-          </PhoneItemWrap>
-          <PhoneItemWrap>
-            <img src={mapA} alt="mapA" />
-            <div>000시 000구 000로</div>
-          </PhoneItemWrap>
-        </PhoneWrap>
-        <PhoneWrap>
-          <PhoneName>000중개사</PhoneName>
-          <PhoneItemWrap>
-            <img src={phoneIcon} alt="phoneICon" />
-            <div>02 - 0000 - 0000</div>
-          </PhoneItemWrap>
-          <PhoneItemWrap>
-            <img src={mapA} alt="mapA" />
-            <div>000시 000구 000로</div>
-          </PhoneItemWrap>
-        </PhoneWrap>
-        <PhoneWrap>
-          <PhoneName>000중개사</PhoneName>
-          <PhoneItemWrap>
-            <img src={phoneIcon} alt="phoneICon" />
-            <div>02 - 0000 - 0000</div>
-          </PhoneItemWrap>
-          <PhoneItemWrap>
-            <img src={mapA} alt="mapA" />
-            <div>000시 000구 000로</div>
-          </PhoneItemWrap>
-        </PhoneWrap>
-        <PhoneWrap>
-          <PhoneName>000중개사</PhoneName>
-          <PhoneItemWrap>
-            <img src={phoneIcon} alt="phoneICon" />
-            <div>02 - 0000 - 0000</div>
-          </PhoneItemWrap>
-          <PhoneItemWrap>
-            <img src={mapA} alt="mapA" />
-            <div>000시 000구 000로</div>
-          </PhoneItemWrap>
-        </PhoneWrap>
+        {agencies.map((agency, index) => (
+          <PhoneWrap key={index}>
+            <PhoneName> {agency.name}</PhoneName>
+            <PhoneItemWrap>
+              <img src={phoneIcon} alt="phoneICon" />
+              <div>{agency.phone}</div>
+            </PhoneItemWrap>
+            <PhoneItemWrap>
+              <img src={mapA} alt="mapA" />
+              <div>{agency.address}</div>
+            </PhoneItemWrap>
+          </PhoneWrap>
+        ))}
       </PhoneContainer>
     </div>
   );
