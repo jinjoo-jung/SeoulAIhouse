@@ -4,15 +4,8 @@ import RecommendCommon from './RecommendCommon';
 import styled from '@emotion/styled';
 import leftCircleIcon from '../../assets/leftCircle.svg';
 import rightCircleIcon from '../../assets/rightCircle.svg';
-import { useNavigate } from 'react-router-dom';
 
 const RecommendList = () => {
-  const navigate = useNavigate();
-
-  const handleNavigate = () => {
-    navigate('/townInfo'); // 'towninfo' 경로로 이동
-  };
-
   return (
     <RecommendListContainer>
       <TimeWrap>
