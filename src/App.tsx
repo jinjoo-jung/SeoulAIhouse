@@ -11,23 +11,26 @@ import OnBoardingD from './pages/onBoarding/OnBoardingD';
 import OnBoardingC from './pages/onBoarding/OnBoardingC';
 import OnBoardingE from './pages/onBoarding/OnBoardingE';
 import Map from './pages/map';
+import { RecoilRoot } from 'recoil';
 
 function App() {
   return (
     <>
-      <Global styles={reset} />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<OnBoarding />} />
-          <Route path="/onBoardingB" element={<OnBoardingB />} />
-          <Route path="/onBoardingC" element={<OnBoardingC />} />
-          <Route path="/onBoardingD" element={<OnBoardingD />} />
-          <Route path="/onBoardingE" element={<OnBoardingE />} />
-          <Route path="/townRecommend" element={<TownRecommend />} />
-          <Route path="map" element={<Map />} />
-          <Route path="/townInfo" element={<TownInfo />} />
-        </Routes>
-      </BrowserRouter>
+      <RecoilRoot>
+        <Global styles={reset} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<OnBoarding />} />
+            <Route path="/onBoardingB" element={<OnBoardingB />} />
+            <Route path="/onBoardingC" element={<OnBoardingC />} />
+            <Route path="/onBoardingD" element={<OnBoardingD />} />
+            <Route path="/onBoardingE" element={<OnBoardingE />} />
+            <Route path="/townRecommend" element={<TownRecommend />} />
+            <Route path="map" element={<Map />} />
+            <Route path="/townInfo" element={<TownInfo />} />
+          </Routes>
+        </BrowserRouter>
+      </RecoilRoot>
     </>
   );
 }

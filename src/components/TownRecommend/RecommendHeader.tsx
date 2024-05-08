@@ -2,6 +2,8 @@ import React from 'react';
 import MiniLogo from '../../assets/homezMiniLogo.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { addressState } from '../../recoil/addressState';
 
 const RecommendHeader = () => {
   const navigate = useNavigate();
@@ -13,11 +15,13 @@ const RecommendHeader = () => {
     navigate(`/map`);
   };
 
+  const address = useRecoilValue(addressState);
+
   return (
     <RecommendHeaderContainer>
       <img onClick={() => handleClickLogo()} src={MiniLogo} alt="mini-logo" />
       <HeaderWrap>
-        <HeaderText>000동 00로</HeaderText>
+        <HeaderText>{address.address}</HeaderText>
       </HeaderWrap>
       <RecommendChange>변경하기</RecommendChange>
       <MapMoveText onClick={() => hanldeMapClick()}>

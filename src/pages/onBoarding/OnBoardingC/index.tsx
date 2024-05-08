@@ -6,6 +6,8 @@ import DaumPostcode from 'react-daum-postcode';
 import getAddressStation from '../../../api/getStation';
 import iconC1 from '.././../../assets/onBoardingC1.svg';
 import iconC2 from '.././../../assets/onBoardingC2.svg';
+import { useRecoilState } from 'recoil';
+import { addressState } from '../../../recoil/addressState';
 
 declare global {
   interface Window {
@@ -24,14 +26,13 @@ interface InputStyleProps {
 
 const OnBoardingC = () => {
   const [isModal, setIsModal] = useState(false);
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useRecoilState(addressState);
   const [coords, setCoords] = useState<Coords | null>(null);
   const navigate = useNavigate();
   const [isValid, setIsValid] = useState(false);
   const [isValidErrorMessage, setIsValidErrorMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const modalRef = useRef(null);
-  const [station, setStation] = useState('');
 
   const handleClickNext = () => {
     navigate(`/onBoardingD`);
@@ -44,17 +45,6 @@ const OnBoardingC = () => {
   const handleInputClick = () => {
     setIsModal((prev) => !prev);
   };
-
-  // const closeModal = (e: MouseEvent) => {
-  //   if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-  //     setIsModal(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   document.addEventListener('mousedown', closeModal);
-  //   return () => document.removeEventListener('mousedown', closeModal);
-  // }, []);
 
   // 주소 주변 역 조회 함수
   const addressStation = async () => {
@@ -84,7 +74,7 @@ const OnBoardingC = () => {
 
   const handleComplete = (data: { address: string }) => {
     console.log(data);
-    setAddress(data.address);
+    setAddress({ address: data.address });
     setIsModal(false);
 
     // Daum Maps Geocoder를 사용하여 좌표 검색
@@ -119,7 +109,7 @@ const OnBoardingC = () => {
         <TextInput
           onClick={() => handleInputClick()}
           type="text"
-          value={address}
+          value={address.address}
           placeholder="ex) 00구 00동 00로, 000대학교"
           readOnly
           error={isValidErrorMessage}
