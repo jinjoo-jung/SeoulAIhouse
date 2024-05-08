@@ -7,14 +7,17 @@ import rightCircleIcon from '../../assets/rightCircle.svg';
 import getHomeRecommend from '../../api/getHomeRecommend';
 import { HomeRecommendPropertyResponse } from '../../types/homeRecommned';
 
-const TownInfoHomeRecommend = () => {
+interface TownNameProps {
+  townName: string;
+}
+
+const TownInfoHomeRecommend = ({ townName }: TownNameProps) => {
   const [properties, setProperties] = useState<HomeRecommendPropertyResponse[]>(
     [],
   );
-
   const homeRecommend = async () => {
     try {
-      const homeRecommendResponse = await getHomeRecommend('대흥동');
+      const homeRecommendResponse = await getHomeRecommend(townName);
       if (
         homeRecommendResponse &&
         homeRecommendResponse.result &&
@@ -29,7 +32,7 @@ const TownInfoHomeRecommend = () => {
 
   useEffect(() => {
     homeRecommend();
-  }, []);
+  }, [townName]);
 
   return (
     <div>

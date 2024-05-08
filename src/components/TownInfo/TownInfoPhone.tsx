@@ -6,12 +6,16 @@ import mapA from '../../assets/MapA.svg';
 import getAgencyRecommend from '../../api/getAgencyRecommend';
 import { AgencyListResponse } from '../../types/agency';
 
-const TownInfoPhone = () => {
+interface TownNameProps {
+  townName: string;
+}
+
+const TownInfoPhone = ({ townName }: TownNameProps) => {
   const [agencies, setAgencies] = useState<AgencyListResponse[]>([]);
 
   const agencyRecommend = async () => {
     try {
-      const agencyRecommendResponse = await getAgencyRecommend('대흥동');
+      const agencyRecommendResponse = await getAgencyRecommend(townName);
       if (agencyRecommendResponse) {
         setAgencies(agencyRecommendResponse.result.agencies);
       }
@@ -22,7 +26,7 @@ const TownInfoPhone = () => {
 
   useEffect(() => {
     agencyRecommend();
-  }, []);
+  }, [townName]);
 
   return (
     <div>

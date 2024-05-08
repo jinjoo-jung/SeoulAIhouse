@@ -7,7 +7,7 @@ const RecommendCommon = () => {
   const navigate = useNavigate();
 
   const handleRecommendClick = () => {
-    navigate('/townInfo');
+    navigate('/townInfo', { state: { townName: '대흥동' } });
   };
 
   return (
