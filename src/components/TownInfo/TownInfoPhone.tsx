@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import likeIcon from '../../assets/LikeIcon.svg';
 import styled from '@emotion/styled';
 import phoneIcon from '../../assets/Phone.svg';
 import mapA from '../../assets/MapA.svg';
+import getAgencyRecommend from '../../api/getAgencyRecommend';
+import { AgencyListResponse } from '../../types/agency';
 
 const TownInfoPhone = () => {
+  const [agencies, setAgencies] = useState<AgencyListResponse[]>([]);
+
+  const agencyRecommend = async () => {
+    try {
+      const agencyRecommendResponse = await getAgencyRecommend('대흥동');
+      if (agencyRecommendResponse) {
+        setAgencies(agencyRecommendResponse.result.agencies);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    agencyRecommend();
+  }, []);
+
   return (
     <div>
       <HomeWrap>
