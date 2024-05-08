@@ -50,7 +50,7 @@ const OnBoardingD = () => {
       if (response && response.isSuccess) {
         console.log(response);
         sessionStorage.setItem('accessToken', response.result.accessToken);
-        navigate(`/TownRecommend`);
+        navigate(`/townRecommend`);
       } else {
         console.log('Failed to get a valid response:', response);
       }
