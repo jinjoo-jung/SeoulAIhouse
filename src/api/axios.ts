@@ -6,12 +6,18 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const accessToken = sessionStorage.getItem('accessToken');
-    console.log(accessToken);
+    // const accessToken = sessionStorage.getItem('accessToken');
+    // console.log(accessToken);
 
-    if (accessToken) {
-      config.headers['Authorization'] = `Bearer ${accessToken}`;
-    }
+    // if (accessToken) {
+    //   config.headers['Authorization'] = `Bearer ${accessToken}`;
+    // }
+    const accessToken = sessionStorage.setItem(
+      'accessToken',
+      'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1N2I4NjI2Ni0yNjYwLTQzZGUtODliZS0xYTViZWRhYTI3OTgiLCJpYXQiOjE3MTUyMTQ0NjUsImV4cCI6MjA3NTIxNDQ2NX0.KAQJn60rotXW2WJwOGtVfPqi0mYgXyMRW5qwe8yAT-c',
+    );
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
+
     config.headers['Content-Type'] = 'application/json';
     // config.headers.Authorization = `Bearer ${accessToken}`;
     config.headers.Accept = 'application/json';
