@@ -72,8 +72,11 @@ const HomeWrap = styled.div`
 `;
 
 const PhoneContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   width: 1048px;
-  height: 334px;
+  height: auto; // 높이를 auto로 설정하여 내용에 맞게 조정
   background-color: #f6f6f6;
   border-radius: 20px;
   padding: 40px;
@@ -82,18 +85,21 @@ const PhoneContainer = styled.div`
 const PhoneWrap = styled.div`
   display: flex;
   align-items: center;
-  gap: 100px;
-  margin-bottom: 40px;
+  justify-content: flex-start; // 왼쪽에서 시작
 `;
 
 const PhoneItemWrap = styled.div`
+  width: 30%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; // 왼쪽에서 시작
   gap: 10px;
 `;
 
 const PhoneName = styled.div`
+  width: 30%; // 세 항목이 동일한 비율을 차지하도록
+  text-align: left; // 텍스트 왼쪽 정렬
+
   font-size: 20px;
   font-weight: 600;
 `;
