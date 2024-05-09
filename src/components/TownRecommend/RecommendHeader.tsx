@@ -1,5 +1,5 @@
 import React from 'react';
-import MiniLogo from '../../assets/homezMiniLogo.svg';
+import MiniLogo from '../../assets/seoul.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';

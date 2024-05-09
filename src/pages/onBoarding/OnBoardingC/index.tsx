@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
+import seoul from '../../../assets/seoul.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import DaumPostcode from 'react-daum-postcode';
@@ -94,11 +94,7 @@ const OnBoardingC = () => {
     <div>
       <IconC2 src={iconC2} alt="iconC2" />
       <IconC1 src={iconC1} alt="iconC1" />
-      <MiniLogo
-        onClick={() => handleClickLogo()}
-        src={homezMiniLogo}
-        alt="homezMiniLogo"
-      />
+      <MiniLogo onClick={() => handleClickLogo()} src={seoul} alt="seoul" />
       <OnBoardingBContainer>
         <MainText>직장이나 학교 주소를 입력해주세요.</MainText>
         {isModal && (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
+import homezMiniLogo from '../../../assets/seoul.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import onBoardingBIcon from '../../../assets/onBoardingB.svg';

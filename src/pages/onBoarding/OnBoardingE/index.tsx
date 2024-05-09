@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
+import seoul from '../../../assets/seoul.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import iconE from '../../../assets/onBoardingE.svg';
@@ -75,8 +75,8 @@ const OnBoardingE = () => {
       <IconE src={iconE} alt="IconE" />
       <MiniLogo
         onClick={() => handleClickLogo()}
-        src={homezMiniLogo}
-        alt="homezMiniLogo"
+        src={seoul}
+        alt="homezseoulMiniLogo"
       />
       <OnBoardingBContainer>
         <OnBoardingEWrap>

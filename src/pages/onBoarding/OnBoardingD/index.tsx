@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import homezMiniLogo from '../../../assets/homezMiniLogo.svg';
+import seoul from '../../../assets/seoul.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import postOnboarding from '../../../api/postOnBoarding';
@@ -67,11 +67,7 @@ const OnBoardingD = () => {
     <div>
       <IconD1 src={iconD1} alt="iconD1" />
       <IconD2 src={iconD2} alt="iconD1" />
-      <MiniLogo
-        onClick={() => handleClickLogo()}
-        src={homezMiniLogo}
-        alt="homezMiniLogo"
-      />
+      <MiniLogo onClick={() => handleClickLogo()} src={seoul} alt="seoul" />
       <OnBoardingBContainer>
         <MainText>선호하는 소요시간을 선택해주세요. </MainText>
         <ButtonContainer>
