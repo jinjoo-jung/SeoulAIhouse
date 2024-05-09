@@ -5,18 +5,22 @@ import { useNavigate } from 'react-router-dom';
 import onBoardingBIcon from '../../../assets/onBoardingB.svg';
 
 const options = [
-  '안전도',
-  '안전도',
-  '시간',
-  '안전도',
-  '안전도',
-  '안전도',
-  '안전도',
-  '안전도',
-  '안전도',
-  '안전도',
-  '안전도',
-  '안전도',
+  '약국',
+  '여성 복지 시설',
+  '교육 시설',
+  '문화 복지 시설',
+  '영화관',
+  '미술관',
+  '공원',
+  '도서관',
+  '녹지 분포',
+  '소음',
+  '대기청결도',
+  '휴식공간',
+  '수질오염',
+  '치안',
+  '깨끗한 길거리',
+  '주차질서',
 ];
 
 const OnBoardingB = () => {
@@ -102,7 +106,7 @@ const MainText = styled.div`
   font-size: 32px;
   margin: 8px;
   font-weight: bold;
-  margin-top: 24px;
+  margin-top: 16px;
   margin-bottom: 20px;
 `;
 
@@ -119,7 +123,7 @@ const ButtonContainer = styled.div`
 `;
 
 const ButtonItem = styled.button<{ isSelected: boolean }>`
-  width: 239.5px;
+  width: 200px;
   height: 65px;
   border-radius: 20px;
   font-size: 24px;
@@ -140,7 +144,7 @@ const NextButton = styled.button`
     props.disabled ? 'rgba(129, 129, 129, 0.4)' : '#005CAB'};
   font-size: 24px;
   border-radius: 20px;
-  margin-top: 50px;
+  margin-top: 16px;
   cursor: pointer;
   font-weight: 500;
 `;
