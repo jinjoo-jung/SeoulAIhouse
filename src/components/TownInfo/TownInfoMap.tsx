@@ -22,96 +22,103 @@ const TownInfoMap = () => {
   const [markers, setMarkers] = useState<MapMarkerLabelResponse[]>([]);
 
   useEffect(() => {
-    const loadMarkers = async () => {
-      const stationName = sessionStorage.getItem('station');
-      if (stationName) {
+    const loadMapAndMarkers = async () => {
+      if (!window.kakao || !window.kakao.maps) {
+        alert('Kakao maps SDK not loaded');
+        return;
+      }
+
+      window.kakao.maps.load(async () => {
+        const stationName = sessionStorage.getItem('station');
+        if (!stationName) return;
+
         const mapMarkerRequest = {
-          x: 126.94783366705356,
           y: 37.5622375470803,
+          x: 126.94783366705356,
           radius: 1000,
         };
+
+        const position = new window.kakao.maps.LatLng(
+          mapMarkerRequest.y,
+          mapMarkerRequest.x,
+        );
+        const mapOptions = {
+          center: position,
+          level: 3,
+        };
+        const map = new window.kakao.maps.Map(mapContainer.current, mapOptions);
 
         try {
           const mapMarkerResponse = await getMapMarker(
             stationName,
             mapMarkerRequest,
           );
-          if (mapMarkerResponse?.isSuccess) {
+          if (mapMarkerResponse && mapMarkerResponse.isSuccess) {
             setMarkers(mapMarkerResponse.result.labels);
+            mapMarkerResponse.result.labels.forEach((markerData) => {
+              addMarker(markerData, map);
+            });
           }
         } catch (error) {
-          console.log(error);
+          console.error('Failed to load markers:', error);
         }
-      }
-    };
-    loadMarkers();
-
-
-    const position = new kakao.maps.LatLng(37.54699, 127.09598);
-    const mapOptions = {
-      center: position,
-      level: 4,
-    };
-    const map = new kakao.maps.Map(mapContainer.current, mapOptions);
-
-    markers.forEach(markerData => {
-      const markerPosition = new kakao.maps.LatLng(markerData.latitude, markerData.longitude);
-      const marker = new kakao.maps.Marker({
-        position: markerPosition,
-        image: new kakao.maps.MarkerImage(getIcon(markerData.mark), new kakao.maps.Size(24, 35))
       });
-
-      const content = `<div class="customoverlay">
-        <div style="position:relative; display:flex; align-items:center;">
-          <img style="position:absolute; margin-left: -8px;" src="${getIcon(markerData.mark)}" />
-          <div style="width:90px; height:51px; display:flex; align-items:center; justify-content: center; background-color: #F6F6F6; font-size: 20px; padding-left:48px; border: 1px solid rgba(129, 129, 129, 0.4); border-radius: 100px;">${markerData.avgRental}/${markerData.avgDeposit}</div>
-        </div>
-      </div>`;
-  }, []);
-
-  useEffect(() => {
-    const position = new kakao.maps.LatLng(37.54699, 127.09598);
-    const mapOptions = {
-      center: position, // 지도의 중심좌표
-      level: 4, // 지도의 확대 레벨
     };
-    const map = new kakao.maps.Map(mapContainer.current, mapOptions);
 
-    const markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-    const marker = new kakao.maps.Marker({ position: markerPosition }); // 마커 생성
+    loadMapAndMarkers();
+  }, []); // 의존성 배열을 비워 컴포넌트 마운트 시 1회만 실행
 
-    const zoomControl = new kakao.maps.ZoomControl();
-    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+  const addMarker = (markerData: MapMarkerLabelResponse, map: any) => {
+    const markerPosition = new kakao.maps.LatLng(
+      markerData.latitude,
+      markerData.longitude,
+    );
+    const marker = new kakao.maps.Marker({
+      position: markerPosition,
+      image: new kakao.maps.MarkerImage(
+        getIcon(markerData.mark),
+        new kakao.maps.Size(24, 35),
+      ),
+    });
 
-    //마커가 지도 위에 표시되는 설정
-    marker.setMap(map);
+    // 오버레이에 들어갈 내용
+    const content = `<div class="customoverlay">
+   <div style="position:relative; display:flex; align-items:center;">
+     <img style="position:absolute; margin-left: -8px;" src="${getIcon(markerData.mark)}" />
+     <div style="width:90px; height:51px; 
+     display:flex;
+      align-items:center;
+       justify-content: center;
+        background-color: #F6F6F6; 
+        font-size: 20px; 
+        padding-left:48px;
+         border: 1px solid rgba(129, 129, 129, 0.4);
+          border-radius: 100px;">${markerData.avgRental}/${markerData.avgDeposit}</div>
+   </div>
+ </div>`;
 
-    const content = `
-  <div class="customoverlay">
-  <div style="position:relative; display:flex; align-items:center;  " >
-  <img style ="position:absolute; margin-left: -8px;" src="${normalIcon}" />  
-  <div style =
-  "width:90px;
-  height:51px;
-  display:flex; 
-  align-items:center;
-  justify-content: center;
-  background-color: #F6F6F6;
-  font-size: 20px;
-  padding-left:48px;
-  border: 1px solid rgba(129, 129, 129, 0.4); /* 818181을 40% 투명도로 적용 */
-  border-radius: 100px;">80/500</div></div>
-</div>
-  `;
-
-    // 커스텀 오버레이 생성
-    new kakao.maps.CustomOverlay({
+    const overlay = new kakao.maps.CustomOverlay({
       map,
-      position,
-      content,
+      position: markerPosition,
+      content: content,
       yAnchor: 1,
     });
-  });
+
+    overlay.setMap(map);
+  };
+
+  const getIcon = (mark: string) => {
+    switch (mark) {
+      case 'GOOD':
+        return smileIcon;
+      case 'SOSO':
+        return normalIcon;
+      case 'BAD':
+        return sadIcon;
+      default:
+        return normalIcon;
+    }
+  };
 
   const handleClickMap = () => {
     navigate(`/map`);
