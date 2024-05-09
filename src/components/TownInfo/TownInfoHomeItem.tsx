@@ -9,7 +9,7 @@ interface HomeRecommendItemProps {
 }
 
 const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
-  console.log(property);
+  // console.log(property);
 
   const calculateArea = (area: number, floor: number) => {
     return area / floor;
@@ -109,6 +109,7 @@ const RecommendCommonWrap = styled.div`
   align-items: center;
   justify-content: center;
   gap: 26px;
+  overflow-x: auto;
 `;
 
 const AreaText = styled.div`
@@ -121,6 +122,8 @@ const InfoMapWrap = styled.div`
   width: 238px;
   display: flex;
   align-items: center;
+  white-space: nowrap;
+
   font-size: 20px;
   img {
     margin-right: 16px;
@@ -133,20 +136,24 @@ const InfoMapText = styled.div`
 `;
 
 const InfoWrap = styled.div`
+  width: 271px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  padding: 2px;
+  justify-content: flex-start;
+  gap: 20px;
 `;
 
 const InfoItem = styled.div`
+  display: flex;
   font-size: 20px;
   font-weight: bold;
+  white-space: nowrap;
   color: #8c8c8c;
+  margin-left: 60px;
 `;
 
 const InfoItemPrice = styled.div`
+  display: flex;
+  white-space: nowrap;
   font-size: 24px;
   font-weight: bold;
   color: black;

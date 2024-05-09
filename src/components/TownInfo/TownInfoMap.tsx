@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mapIcon from '../../assets/mapIcon.svg';
 import styled from '@emotion/styled';
 import mapRightIcon from '../../assets/mapRight.svg';
@@ -6,6 +6,8 @@ import normalIcon from '../../assets/noraml.svg';
 import smileIcon from '../../assets/smile.svg';
 import sadIcon from '../../assets/sad.svg';
 import { useNavigate } from 'react-router-dom';
+import getMapMarker from '../../api/getMapMaker';
+import { MapMarkerLabelResponse } from '../../types/mapMarker';
 
 declare global {
   interface Window {
@@ -17,6 +19,55 @@ const TownInfoMap = () => {
   const navigate = useNavigate();
   const { kakao } = window;
   const mapContainer = useRef(null);
+  const [markers, setMarkers] = useState<MapMarkerLabelResponse[]>([]);
+
+  useEffect(() => {
+    const loadMarkers = async () => {
+      const stationName = sessionStorage.getItem('station');
+      if (stationName) {
+        const mapMarkerRequest = {
+          x: 126.94783366705356,
+          y: 37.5622375470803,
+          radius: 1000,
+        };
+
+        try {
+          const mapMarkerResponse = await getMapMarker(
+            stationName,
+            mapMarkerRequest,
+          );
+          if (mapMarkerResponse?.isSuccess) {
+            setMarkers(mapMarkerResponse.result.labels);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    loadMarkers();
+
+
+    const position = new kakao.maps.LatLng(37.54699, 127.09598);
+    const mapOptions = {
+      center: position,
+      level: 4,
+    };
+    const map = new kakao.maps.Map(mapContainer.current, mapOptions);
+
+    markers.forEach(markerData => {
+      const markerPosition = new kakao.maps.LatLng(markerData.latitude, markerData.longitude);
+      const marker = new kakao.maps.Marker({
+        position: markerPosition,
+        image: new kakao.maps.MarkerImage(getIcon(markerData.mark), new kakao.maps.Size(24, 35))
+      });
+
+      const content = `<div class="customoverlay">
+        <div style="position:relative; display:flex; align-items:center;">
+          <img style="position:absolute; margin-left: -8px;" src="${getIcon(markerData.mark)}" />
+          <div style="width:90px; height:51px; display:flex; align-items:center; justify-content: center; background-color: #F6F6F6; font-size: 20px; padding-left:48px; border: 1px solid rgba(129, 129, 129, 0.4); border-radius: 100px;">${markerData.avgRental}/${markerData.avgDeposit}</div>
+        </div>
+      </div>`;
+  }, []);
 
   useEffect(() => {
     const position = new kakao.maps.LatLng(37.54699, 127.09598);
@@ -28,9 +79,6 @@ const TownInfoMap = () => {
 
     const markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
     const marker = new kakao.maps.Marker({ position: markerPosition }); // 마커 생성
-
-    // const mapTypeControl = new kakao.maps.MapTypeControl();
-    // map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
     const zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);

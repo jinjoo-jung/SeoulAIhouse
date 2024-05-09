@@ -32,7 +32,7 @@ const TownInfoPhone = ({ townName }: TownNameProps) => {
     <div>
       <HomeWrap>
         <img src={likeIcon} alt="likeIcon" />
-        <div>00동 공인중개사 목록</div>
+        <div>대흥동 공인중개사 목록</div>
       </HomeWrap>
       <PhoneContainer>
         {agencies.map((agency, index) => (

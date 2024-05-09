@@ -44,8 +44,8 @@ const TownInfoHomeRecommend = ({ townName }: TownNameProps) => {
         <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
-            {properties.map((property) => (
-              <TownInfoHomeItem key={property.name} property={property} />
+            {properties.map((property, index) => (
+              <TownInfoHomeItem key={index} property={property} />
             ))}
           </RecommendCommonWrap>
         </ScrollContainer>
