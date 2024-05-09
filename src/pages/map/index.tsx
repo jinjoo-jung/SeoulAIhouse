@@ -126,8 +126,8 @@ const Map = () => {
     }
   };
 
-  const handleClickMap = () => {
-    navigate(`/map`);
+  const handleChange = () => {
+    navigate(`/onBoardingC`);
   };
   return (
     <div>
@@ -136,7 +136,9 @@ const Map = () => {
         <HeaderWrap>
           <HeaderText>{address.address}</HeaderText>
         </HeaderWrap>
-        <RecommendChange>변경하기</RecommendChange>
+        <RecommendChange onClick={() => handleChange()}>
+          변경하기
+        </RecommendChange>
       </RecommendHeaderContainer>
       <div
         id="map"

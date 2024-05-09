@@ -15,6 +15,10 @@ const RecommendHeader = () => {
     navigate(`/map`);
   };
 
+  const handleChange = () => {
+    navigate(`/onBoardingC`);
+  };
+
   const address = useRecoilValue(addressState);
 
   return (
@@ -23,7 +27,7 @@ const RecommendHeader = () => {
       <HeaderWrap>
         <HeaderText>{address.address}</HeaderText>
       </HeaderWrap>
-      <RecommendChange>변경하기</RecommendChange>
+      <RecommendChange onClick={() => handleChange()}>변경하기</RecommendChange>
       <MapMoveText onClick={() => hanldeMapClick()}>
         전월세/이동시간 맞춤 지도 바로가기
       </MapMoveText>
