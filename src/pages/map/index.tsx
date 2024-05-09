@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
-import smileIcon from '../../assets/smileA.svg';
+import normalIcon from '../../assets/noraml.svg';
+import smileIcon from '../../assets/smile.svg';
+import sadIcon from '../../assets/sad.svg';
 import { useNavigate } from 'react-router-dom';
 
 declare global {
@@ -35,7 +37,7 @@ const Map = () => {
     const content = `
   <div class="customoverlay">
   <div style="position:relative; display:flex; align-items:center;  " >
-  <img style ="position:absolute; margin-left: -8px;" src="${smileIcon}" />  
+  <img style ="position:absolute; margin-left: -8px;" src="${normalIcon}" />  
   <div style =
   "width:90px;
   height:51px;

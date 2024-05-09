@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import mapIcon from '../../assets/mapIcon.svg';
 import styled from '@emotion/styled';
 import mapRightIcon from '../../assets/mapRight.svg';
-import smileIcon from '../../assets/smileA.svg';
+import normalIcon from '../../assets/noraml.svg';
+import smileIcon from '../../assets/smile.svg';
+import sadIcon from '../../assets/sad.svg';
 import { useNavigate } from 'react-router-dom';
 
 declare global {
@@ -18,12 +20,13 @@ const TownInfoMap = () => {
 
   useEffect(() => {
     const position = new kakao.maps.LatLng(37.54699, 127.09598);
-    const markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
     const mapOptions = {
       center: position, // 지도의 중심좌표
       level: 4, // 지도의 확대 레벨
     };
     const map = new kakao.maps.Map(mapContainer.current, mapOptions);
+
+    const markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
     const marker = new kakao.maps.Marker({ position: markerPosition }); // 마커 생성
 
     // const mapTypeControl = new kakao.maps.MapTypeControl();
@@ -38,7 +41,7 @@ const TownInfoMap = () => {
     const content = `
   <div class="customoverlay">
   <div style="position:relative; display:flex; align-items:center;  " >
-  <img style ="position:absolute; margin-left: -8px;" src="${smileIcon}" />  
+  <img style ="position:absolute; margin-left: -8px;" src="${normalIcon}" />  
   <div style =
   "width:90px;
   height:51px;
