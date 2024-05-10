@@ -4,8 +4,14 @@ import RecommendCommon from './RecommendCommon';
 import styled from '@emotion/styled';
 import leftCircleIcon from '../../assets/leftCircle.svg';
 import rightCircleIcon from '../../assets/rightCircle.svg';
+import { TimeGroupsResponse } from '../../types/ranking';
 
-const RecommendList = () => {
+interface RankingPros {
+  timeGroups: TimeGroupsResponse[];
+}
+
+const RecommendList = ({ timeGroups }: RankingPros) => {
+  console.log(timeGroups);
   return (
     <RecommendListContainer>
       <TimeWrap>

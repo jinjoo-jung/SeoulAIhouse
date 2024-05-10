@@ -2,14 +2,18 @@ import React from 'react';
 import RecommendHeader from '../../components/TownRecommend/RecommendHeader';
 import RecommendList from '../../components/TownRecommend/RecommendList';
 import styled from '@emotion/styled';
+import { useLocation } from 'react-router-dom';
 
 const TownRecommend = () => {
+  const location = useLocation();
+  const rankingData = location.state?.rankingData;
+
   return (
     <div>
       <Background />
       <TownRecommendContainer>
         <RecommendHeader />
-        <RecommendList />
+        <RecommendList timeGroups={rankingData} />
       </TownRecommendContainer>
     </div>
   );

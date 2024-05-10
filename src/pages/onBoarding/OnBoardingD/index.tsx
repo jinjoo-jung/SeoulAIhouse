@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import postOnboarding from '../../../api/postOnBoarding';
 import iconD1 from '../../../assets/onBoardingD1.svg';
 import iconD2 from '../../../assets/onBoardingD2.svg';
+import { get } from 'http';
+import getRanking from '../../../api/getRanking';
 
 const OnBoardingD = () => {
   const navigate = useNavigate();
@@ -50,7 +52,18 @@ const OnBoardingD = () => {
       if (response && response.isSuccess) {
         console.log(response);
         sessionStorage.setItem('accessToken', response.result.accessToken);
-        navigate(`/townRecommend`);
+
+        if (destination) {
+          const rankingResponse = await getRanking({ destination });
+          if (rankingResponse && rankingResponse.isSuccess) {
+            console.log(rankingResponse);
+            navigate(`/townRecommend`, {
+              state: { rankingData: rankingResponse.result.timeGroups },
+            });
+          } else {
+            console.log('Failed to get ranking data:', rankingResponse);
+          }
+        }
       } else {
         console.log('Failed to get a valid response:', response);
       }
