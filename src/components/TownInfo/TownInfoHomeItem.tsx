@@ -12,7 +12,8 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   // console.log(property);
 
   const calculateArea = (area: number, floor: number) => {
-    return area / floor;
+    const result = area / floor;
+    return parseFloat(result.toFixed(2));
   };
 
   const formatMoney = (value: number) => {
