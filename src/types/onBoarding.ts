@@ -4,7 +4,7 @@ export interface OnBoardingRequest {
   workDay: string | null;
   arrivalTime: number | null;
   factors: string[];
-  station: string | null;
+  destination: string | null;
   timeRange: string | null;
 }
 

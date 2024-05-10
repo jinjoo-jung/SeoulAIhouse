@@ -54,6 +54,10 @@ const TownInfoMap = () => {
         };
         const map = new window.kakao.maps.Map(mapContainer.current, mapOptions);
 
+        // 줌 컨트롤 추가
+        const zoomControl = new window.kakao.maps.ZoomControl();
+        map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+
         try {
           const mapMarkerResponse = await getMapMarker(
             stationName,
@@ -238,7 +242,7 @@ const MapContentContainer = styled.div`
   bottom: 0;
   z-index: 1;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   margin-right: 100px;
 `;
 

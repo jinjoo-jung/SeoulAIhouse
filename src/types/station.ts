@@ -7,6 +7,6 @@ export interface StationResponse {
   isSuccess: boolean;
   message: string;
   result: {
-    station: string;
+    destination: string;
   };
 }

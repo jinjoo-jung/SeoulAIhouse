@@ -55,7 +55,7 @@ const OnBoardingC = () => {
         if (response?.isSuccess) {
           setIsValid(true);
           setIsValidErrorMessage(false);
-          sessionStorage.setItem('station', response.result.station);
+          sessionStorage.setItem('destination', response.result.destination);
         }
       } catch (error) {
         setIsValid(false);
