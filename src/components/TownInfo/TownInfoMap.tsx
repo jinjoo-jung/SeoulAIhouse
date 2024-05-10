@@ -83,13 +83,6 @@ const TownInfoMap = () => {
       markerData.latitude,
       markerData.longitude,
     );
-    const marker = new kakao.maps.Marker({
-      position: markerPosition,
-      image: new kakao.maps.MarkerImage(
-        getIcon(markerData.mark),
-        new kakao.maps.Size(24, 35),
-      ),
-    });
 
     // 오버레이에 들어갈 내용
     const content = `<div class="customoverlay">
