@@ -12,94 +12,45 @@ interface RankingPros {
 
 const RecommendList = ({ timeGroups }: RankingPros) => {
   console.log(timeGroups);
+
+  const getTimeRangeLabel = (timeRange: string, index: number) => {
+    const labels = {
+      WITHIN_30_MINUTES: '0분 ~ 30분',
+      WITHIN_60_MINUTES: '30분 ~ 60분', // 기본 매핑
+      WITHIN_90_MINUTES: '60분 ~ 90분',
+      OVER_90_MINUTES: '90분 이상',
+    };
+    // 첫 번째 인덱스에만 '0분 ~ 60분' 레이블 사용
+    if (index === 0 && timeRange === 'WITHIN_60_MINUTES') {
+      return '0분 ~ 60분';
+    }
+    return (
+      labels[timeRange as keyof typeof labels] || '정의되지 않은 시간 범위'
+    );
+  };
+
   return (
     <RecommendListContainer>
-      <TimeWrap>
-        <img src={Clock} alt="clock" />
-        <div>0분 ~ 60분</div>
-      </TimeWrap>
-      <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
-        <ScrollContainer>
-          <RecommendCommonWrap>
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-          </RecommendCommonWrap>
-        </ScrollContainer>
-        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
-      </ArrowAndScrollContainer>
-      <Divider />
-      <TimeWrap>
-        <img src={Clock} alt="clock" />
-        <div>0분 ~ 30분</div>
-      </TimeWrap>
-      <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
-        <ScrollContainer>
-          <RecommendCommonWrap>
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-          </RecommendCommonWrap>
-        </ScrollContainer>
-        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
-      </ArrowAndScrollContainer>
-      <TimeWrap>
-        <img src={Clock} alt="clock" />
-        <div>30분 ~ 60분</div>
-      </TimeWrap>
-      <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
-        <ScrollContainer>
-          <RecommendCommonWrap>
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-          </RecommendCommonWrap>
-        </ScrollContainer>
-        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
-      </ArrowAndScrollContainer>
-      <TimeWrap>
-        <img src={Clock} alt="clock" />
-        <div>60분 ~ 90분</div>
-      </TimeWrap>
-      <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
-        <ScrollContainer>
-          <RecommendCommonWrap>
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-          </RecommendCommonWrap>
-        </ScrollContainer>
-        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
-      </ArrowAndScrollContainer>
-      <TimeWrap>
-        <img src={Clock} alt="clock" />
-        <div>90분 이상</div>
-      </TimeWrap>
-      <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
-        <ScrollContainer>
-          <RecommendCommonWrap>
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-            <RecommendCommon />
-          </RecommendCommonWrap>
-        </ScrollContainer>
-        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
-      </ArrowAndScrollContainer>
+      {timeGroups.map((group, index) => (
+        <div key={index}>
+          <TimeWrap>
+            <img src={Clock} alt="clock" />
+            <div>{getTimeRangeLabel(group.timeRange, index)}</div>
+          </TimeWrap>
+          <ArrowAndScrollContainer>
+            <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
+            <ScrollContainer>
+              <RecommendCommonWrap>
+                {group.townCards.map((town, townIndex) => (
+                  <RecommendCommon key={townIndex} {...town} />
+                ))}
+              </RecommendCommonWrap>
+            </ScrollContainer>
+            <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
+          </ArrowAndScrollContainer>
+          {index < timeGroups.length - 1 && <Divider />}
+        </div>
+      ))}
     </RecommendListContainer>
   );
 };
@@ -165,6 +116,7 @@ const RecommendCommonWrap = styled.div`
   display: flex;
   gap: 30px;
   flex-shrink: 0; // 컴포넌트 크기가 줄어들지 않도록 설정
+  height: 300px;
 
   & > * {
     flex-shrink: 0; // 자식 요소들도 크기가 줄어들지 않도록 설정

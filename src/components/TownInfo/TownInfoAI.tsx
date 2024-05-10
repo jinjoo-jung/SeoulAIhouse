@@ -14,37 +14,31 @@ const data = [
   {
     subject: '안전성',
     A: 120,
-    B: 110,
     fullMark: 150,
   },
   {
     subject: '거리',
     A: 98,
-    B: 130,
     fullMark: 150,
   },
   {
     subject: '시간',
     A: 86,
-    B: 130,
     fullMark: 150,
   },
   {
     subject: '주변 상가',
     A: 99,
-    B: 100,
     fullMark: 150,
   },
   {
     subject: '교통',
-    A: 85,
-    B: 90,
+    A: 150,
     fullMark: 150,
   },
   {
     subject: '편의시설',
     A: 65,
-    B: 85,
     fullMark: 150,
   },
 ];

@@ -6,11 +6,11 @@ import onBoardingBIcon from '../../../assets/onBoardingB.svg';
 
 const options = [
   '약국',
-  '여성 복지 시설',
   '교육 시설',
-  '문화 복지 시설',
   '영화관',
   '미술관',
+  '문화 복지 시설',
+  '여성 복지 시설',
   '공원',
   '도서관',
   '녹지 분포',
