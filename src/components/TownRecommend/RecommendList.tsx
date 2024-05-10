@@ -42,7 +42,7 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
             <ScrollContainer>
               <RecommendCommonWrap>
                 {group.townCards.map((town, townIndex) => (
-                  <RecommendCommon key={townIndex} {...town} />
+                  <RecommendCommon key={townIndex} town={town} />
                 ))}
               </RecommendCommonWrap>
             </ScrollContainer>

@@ -2,33 +2,40 @@ import React from 'react';
 import miniClock from '../../assets/MiniClock.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import { TownCardsResponse } from '../../types/ranking';
 
-const RecommendCommon = () => {
+interface TownProps {
+  town: TownCardsResponse;
+}
+
+const RecommendCommon = ({ town }: TownProps) => {
   const navigate = useNavigate();
 
   const handleRecommendClick = () => {
-    navigate('/townInfo', { state: { townName: '대흥동' } });
+    navigate('/townInfo', { state: { townName: town.town } });
   };
 
   return (
     <RecommendCommonContainer onClick={() => handleRecommendClick()}>
       <Ranking>1</Ranking>
       <RecommendCommonWrap>
-        <AreaText>000동</AreaText>
+        <AreaText>{town.town}</AreaText>
         <TimeContainer>
           <TimeWrap>
             <img src={miniClock} alt="mini clock" />
             <TimeItem>소요시간</TimeItem>
           </TimeWrap>
-          <TimeItem>10분</TimeItem>
+          <TimeItem>{town.travelTime}분</TimeItem>
         </TimeContainer>
         <InfoWrap>
           <InfoItem>평균 월세</InfoItem>
-          <InfoItemPrice>80/500</InfoItemPrice>
+          <InfoItemPrice>
+            ${`${town.avgRental}/${town.avgDeposit}`}
+          </InfoItemPrice>
         </InfoWrap>
         <InfoWrap>
           <InfoItem>평균 전세</InfoItem>
-          <InfoItemPrice>80/500</InfoItemPrice>
+          <InfoItemPrice>{town.avgLump}</InfoItemPrice>
         </InfoWrap>
       </RecommendCommonWrap>
     </RecommendCommonContainer>
