@@ -129,7 +129,7 @@ const TownInfoAI = ({ townName }: TownNameProps) => {
               outerRadius={160}
               width={550}
               height={500}
-              data={data}>
+              data={chartData}>
               <PolarGrid />
               <PolarAngleAxis dataKey="name" />
               <PolarRadiusAxis />

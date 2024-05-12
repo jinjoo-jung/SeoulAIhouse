@@ -255,7 +255,6 @@ const ArrowIcon = styled.img`
   z-index: 1;
   margin-bottom: 80px;
   margin-right: 80px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const MapContentContainer = styled.div`

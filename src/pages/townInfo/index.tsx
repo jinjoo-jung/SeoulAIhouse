@@ -8,7 +8,6 @@ import TownInfoMap from '../../components/TownInfo/TownInfoMap';
 import { useLocation } from 'react-router-dom';
 
 const TownInfo = () => {
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
   const location = useLocation();
   const town = location.state?.town;
 

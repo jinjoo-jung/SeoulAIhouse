@@ -48,7 +48,7 @@ export default RecommendCommon;
 const RecommendCommonContainer = styled.div`
   position: relative;
   width: 408px;
-  height: 300px;
+  max-height: 300px;
   border-radius: 20px;
   background-color: #f6f6f6;
   cursor: pointer;
@@ -75,16 +75,17 @@ const RecommendCommonWrap = styled.div`
   max-height: 300px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 30px;
-  padding-top: 50px;
+  gap: 26px;
+  padding: 50px;
 `;
 
 const AreaText = styled.div`
   font-size: 24px;
   font-weight: bold;
   color: black;
+  margin-left: 120px;
 `;
 
 const TimeContainer = styled.div`
@@ -118,6 +119,7 @@ const InfoWrap = styled.div`
   justify-content: center;
   gap: 40px;
   padding: 2px;
+  margin-left: 55px;
 `;
 
 const InfoItem = styled.div`
