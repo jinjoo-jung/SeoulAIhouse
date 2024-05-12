@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Clock from '../../assets/Clock.svg';
 import RecommendCommon from './RecommendCommon';
 import styled from '@emotion/styled';
 import leftCircleIcon from '../../assets/leftCircle.svg';
 import rightCircleIcon from '../../assets/rightCircle.svg';
-import { TimeGroupsResponse } from '../../types/ranking';
+import { TimeGroupsResponse, TownCardsResponse } from '../../types/ranking';
 
 interface RankingPros {
   timeGroups: TimeGroupsResponse[];
@@ -12,18 +12,25 @@ interface RankingPros {
 
 const RecommendList = ({ timeGroups }: RankingPros) => {
   console.log(timeGroups);
+  const [commonRange, setCommonRange] = useState<TownCardsResponse[]>([]);
 
-  const getTimeRangeLabel = (timeRange: string, index: number) => {
+  useEffect(() => {
+    const targetGroup = timeGroups.find(
+      (group) => group.timeRange === 'WITHIN_60_MINUTES',
+    );
+
+    if (targetGroup) {
+      setCommonRange(targetGroup.townCards);
+    }
+  }, [timeGroups]);
+
+  const getTimeRangeLabel = (timeRange: string) => {
     const labels = {
       WITHIN_30_MINUTES: '0분 ~ 30분',
       WITHIN_60_MINUTES: '30분 ~ 60분', // 기본 매핑
       WITHIN_90_MINUTES: '60분 ~ 90분',
       OVER_90_MINUTES: '90분 이상',
     };
-    // 첫 번째 인덱스에만 '0분 ~ 60분' 레이블 사용
-    if (index === 0 && timeRange === 'WITHIN_60_MINUTES') {
-      return '0분 ~ 60분';
-    }
     return (
       labels[timeRange as keyof typeof labels] || '정의되지 않은 시간 범위'
     );
@@ -31,11 +38,31 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
 
   return (
     <RecommendListContainer>
+      <TimeWrap>
+        <img src={Clock} alt="clock" />
+        <div>0분 ~ 60분</div>
+      </TimeWrap>
+      <ArrowAndScrollContainer>
+        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
+        <ScrollContainer>
+          <RecommendCommonWrap>
+            {commonRange.map((town, townIndex) => (
+              <RecommendCommon
+                key={townIndex}
+                town={town}
+                number={townIndex + 1}
+              />
+            ))}
+          </RecommendCommonWrap>
+        </ScrollContainer>
+        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
+      </ArrowAndScrollContainer>
+      <Divider />
       {timeGroups.map((group, index) => (
         <div key={index}>
           <TimeWrap>
             <img src={Clock} alt="clock" />
-            <div>{getTimeRangeLabel(group.timeRange, index)}</div>
+            <div>{getTimeRangeLabel(group.timeRange)}</div>
           </TimeWrap>
           <ArrowAndScrollContainer>
             <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
@@ -52,7 +79,6 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
             </ScrollContainer>
             <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
           </ArrowAndScrollContainer>
-          {index < timeGroups.length - 1 && <Divider />}
         </div>
       ))}
     </RecommendListContainer>
