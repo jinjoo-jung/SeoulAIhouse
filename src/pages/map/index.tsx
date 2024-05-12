@@ -29,7 +29,6 @@ const Map = () => {
     navigate(`/`);
   };
   const [markers, setMarkers] = useState<MapMarkerLabelResponse[]>([]);
-  const [mapCoords, setMapCoords] = useState({ x: 0, y: 0 });
 
   const address = useRecoilValue(addressState);
 
@@ -43,22 +42,24 @@ const Map = () => {
       window.kakao.maps.load(async () => {
         const destination = sessionStorage.getItem('destination');
         if (!destination) return;
+        console.log(destination);
 
         // sessionStorage에서 값을 불러올 때 null 체크를 수행
         const storedX = sessionStorage.getItem('x');
         const storedY = sessionStorage.getItem('y');
 
-        setMapCoords({
-          x: storedX ? parseInt(storedX, 10) : 0, // null이 아닐 때만 parseInt를 호출
-          y: storedY ? parseInt(storedY, 10) : 0,
-        });
-        console.log(storedX, storedY);
+        const mapCoords = {
+          x: storedX ? parseFloat(storedX) : 0, // null이 아닐 때만 parseInt를 호출
+          y: storedY ? parseFloat(storedY) : 0,
+        };
 
         const mapMarkerRequest = {
           y: mapCoords.y,
           x: mapCoords.x,
-          radius: 500,
+          radius: 1000,
         };
+        console.log('좌표: ', mapCoords.x, mapCoords.y);
+        console.log(mapMarkerRequest);
 
         const position = new window.kakao.maps.LatLng(
           mapMarkerRequest.y,

@@ -11,7 +11,6 @@ const TownInfo = () => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const location = useLocation();
   const town = location.state?.town;
-  console.log(town);
 
   useEffect(() => {
     if (town) {

@@ -39,7 +39,6 @@ const OnBoardingB = () => {
   useEffect(() => {
     const selectedLabels = selectedOptions.map((index) => options[index]);
     sessionStorage.setItem('selectedLabels', JSON.stringify(selectedLabels));
-    console.log(selectedLabels);
     if (selectedOptions.length >= 3) {
       setIsValid(true);
     }

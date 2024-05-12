@@ -49,7 +49,6 @@ const OnBoardingC = () => {
   // 주소 주변 역 조회 함수
   const addressStation = async () => {
     if (coords) {
-      console.log(coords.x, coords.y);
       sessionStorage.setItem('x', coords.x.toString());
       sessionStorage.setItem('y', coords.y.toString());
       try {
@@ -75,7 +74,6 @@ const OnBoardingC = () => {
   }, [coords]);
 
   const handleComplete = (data: { address: string }) => {
-    console.log(data);
     setAddress({ address: data.address });
     setIsModal(false);
 

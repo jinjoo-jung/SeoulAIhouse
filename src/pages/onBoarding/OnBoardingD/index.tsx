@@ -14,7 +14,6 @@ const OnBoardingD = () => {
   const [isValid, setIsValid] = useState(false);
 
   const handleClickTimeButton = (preferTime: string) => {
-    console.log(preferTime);
     setPreferTime(preferTime);
     setIsValid(true);
     sessionStorage.setItem('preferTime', preferTime);
@@ -44,18 +43,15 @@ const OnBoardingD = () => {
       arrivalTime: arrivalTime,
       workDay: workDay,
     };
-    console.log(onBoardingRequest);
 
     try {
       const response = await postOnboarding(onBoardingRequest);
       if (response && response.isSuccess) {
-        console.log(response);
         sessionStorage.setItem('accessToken', response.result.accessToken);
 
         if (destination) {
           const rankingResponse = await getRanking({ destination });
           if (rankingResponse && rankingResponse.isSuccess) {
-            console.log(rankingResponse);
             navigate(`/townRecommend`, {
               state: { rankingData: rankingResponse.result.timeGroups },
             });

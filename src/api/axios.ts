@@ -8,7 +8,6 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     const accessToken = sessionStorage.getItem('accessToken');
-    console.log(accessToken);
 
     if (accessToken) {
       config.headers['Authorization'] = `Bearer ${accessToken}`;
@@ -29,7 +28,6 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   async (response) => {
-    console.log('response:', response);
     return response;
   },
   async (error) => {
