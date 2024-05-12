@@ -47,7 +47,7 @@ const TownInfoAI = () => {
   return (
     <TownInfoContainer>
       <TownInfoChartContainer>
-        <ChartTownText>000동 AI 리포트</ChartTownText>
+        <ChartTownText>동 AI 리포트</ChartTownText>
         <ChartAIContainer>
           <ChartAIText>AI 종합 분석</ChartAIText>
           <ChartContent>

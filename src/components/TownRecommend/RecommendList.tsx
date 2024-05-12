@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Clock from '../../assets/Clock.svg';
 import RecommendCommon from './RecommendCommon';
 import styled from '@emotion/styled';
@@ -42,7 +42,11 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
             <ScrollContainer>
               <RecommendCommonWrap>
                 {group.townCards.map((town, townIndex) => (
-                  <RecommendCommon key={townIndex} town={town} />
+                  <RecommendCommon
+                    key={townIndex}
+                    town={town}
+                    number={townIndex + 1}
+                  />
                 ))}
               </RecommendCommonWrap>
             </ScrollContainer>

@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import miniClock from '../../assets/MiniClock.svg';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { TownCardsResponse } from '../../types/ranking';
 
 interface TownProps {
+  number: number;
   town: TownCardsResponse;
 }
 
-const RecommendCommon = ({ town }: TownProps) => {
+const RecommendCommon = ({ number, town }: TownProps) => {
   const navigate = useNavigate();
 
   const handleRecommendClick = () => {
-    navigate('/townInfo', { state: { townName: town.town } });
+    navigate('/townInfo', { state: { town: town } });
   };
 
   return (
     <RecommendCommonContainer onClick={() => handleRecommendClick()}>
-      <Ranking>1</Ranking>
+      <Ranking>{number}</Ranking>
       <RecommendCommonWrap>
         <AreaText>{town.town}</AreaText>
         <TimeContainer>

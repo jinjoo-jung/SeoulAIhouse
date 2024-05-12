@@ -21,7 +21,12 @@ declare global {
   }
 }
 
-const TownInfoMap = () => {
+interface MapProps {
+  x: number;
+  y: number;
+}
+
+const TownInfoMap = ({ x, y }: MapProps) => {
   const navigate = useNavigate();
   const { kakao } = window;
   const mapContainer = useRef(null);
@@ -35,12 +40,12 @@ const TownInfoMap = () => {
       }
 
       window.kakao.maps.load(async () => {
-        const stationName = sessionStorage.getItem('station');
-        if (!stationName) return;
+        const destination = sessionStorage.getItem('destination');
+        if (!destination) return;
 
         const mapMarkerRequest = {
-          y: 37.5622375470803,
-          x: 126.94783366705356,
+          y: y,
+          x: x,
           radius: 1000,
         };
 
@@ -60,7 +65,7 @@ const TownInfoMap = () => {
 
         try {
           const mapMarkerResponse = await getMapMarker(
-            stationName,
+            destination,
             mapMarkerRequest,
           );
           if (mapMarkerResponse && mapMarkerResponse.isSuccess) {
@@ -84,13 +89,6 @@ const TownInfoMap = () => {
       markerData.latitude,
       markerData.longitude,
     );
-    const marker = new kakao.maps.Marker({
-      position: markerPosition,
-      image: new kakao.maps.MarkerImage(
-        getIcon(markerData.mark),
-        new kakao.maps.Size(24, 35),
-      ),
-    });
 
     // 오버레이에 들어갈 내용
     const content = `<div class="customoverlay">
