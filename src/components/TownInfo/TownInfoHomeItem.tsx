@@ -9,20 +9,9 @@ interface HomeRecommendItemProps {
 }
 
 const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
-  // console.log(property);
-
   const calculateArea = (area: number, floor: number) => {
     const result = area / floor;
     return parseFloat(result.toFixed(2));
-  };
-
-  const formatMoney = (value: number) => {
-    if (value >= 10000) {
-      const billions = Math.floor(value / 10000);
-      const rest = value % 10000;
-      return `${billions}억${rest > 0 ? ` ${rest}만원` : '원'}`;
-    }
-    return `${value}만원`;
   };
 
   const getRentDisplay = (
@@ -32,7 +21,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   ) => {
     switch (rentType) {
       case 'MONTH':
-        return `${formatMoney(rental)}/${formatMoney(deposit)}`;
+        return `${rental}/${deposit}`;
       default:
         return '0';
     }
@@ -45,7 +34,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   ) => {
     switch (rentType) {
       case 'LUMP':
-        return `${formatMoney(deposit)}`;
+        return `${deposit}`;
       default:
         return '0';
     }
