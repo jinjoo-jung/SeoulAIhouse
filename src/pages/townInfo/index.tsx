@@ -13,22 +13,7 @@ const TownInfo = () => {
   const town = location.state?.town;
 
   useEffect(() => {
-    if (town) {
-      const x = town.x;
-      const y = town.y;
-
-      sessionStorage.setItem('x', x.toString());
-      sessionStorage.setItem('y', y.toString());
-
-      // sessionStorage에서 값을 불러올 때 null 체크를 수행
-      const storedX = sessionStorage.getItem('x');
-      const storedY = sessionStorage.getItem('y');
-
-      setCoords({
-        x: storedX ? parseInt(storedX, 10) : 0, // null이 아닐 때만 parseInt를 호출
-        y: storedY ? parseInt(storedY, 10) : 0,
-      });
-    }
+    console.log(town.x, town.y);
   }, [town]);
 
   return (
@@ -39,7 +24,7 @@ const TownInfo = () => {
           <TownInfoAI townName={town.town} />
           <TownInfoHomeRecommend townName={town.town} />
           <TownInfoPhone townName={town.town} />
-          <TownInfoMap x={coords.x} y={coords.y} />
+          <TownInfoMap x={town.x} y={town.y} />
         </TownInfoContentWrap>
       </TownInfoContentContainer>
     </div>
