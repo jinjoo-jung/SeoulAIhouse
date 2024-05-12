@@ -29,6 +29,7 @@ const Map = () => {
     navigate(`/`);
   };
   const [markers, setMarkers] = useState<MapMarkerLabelResponse[]>([]);
+  const [mapCoords, setMapCoords] = useState({ x: 0, y: 0 });
 
   const address = useRecoilValue(addressState);
 
@@ -40,13 +41,23 @@ const Map = () => {
       }
 
       window.kakao.maps.load(async () => {
-        const stationName = sessionStorage.getItem('station');
-        if (!stationName) return;
+        const destination = sessionStorage.getItem('destination');
+        if (!destination) return;
+
+        // sessionStorage에서 값을 불러올 때 null 체크를 수행
+        const storedX = sessionStorage.getItem('x');
+        const storedY = sessionStorage.getItem('y');
+
+        setMapCoords({
+          x: storedX ? parseInt(storedX, 10) : 0, // null이 아닐 때만 parseInt를 호출
+          y: storedY ? parseInt(storedY, 10) : 0,
+        });
+        console.log(storedX, storedY);
 
         const mapMarkerRequest = {
-          y: 37.5622375470803,
-          x: 126.94783366705356,
-          radius: 1000,
+          y: mapCoords.y,
+          x: mapCoords.x,
+          radius: 500,
         };
 
         const position = new window.kakao.maps.LatLng(
@@ -65,7 +76,7 @@ const Map = () => {
 
         try {
           const mapMarkerResponse = await getMapMarker(
-            stationName,
+            destination,
             mapMarkerRequest,
           );
           if (mapMarkerResponse && mapMarkerResponse.isSuccess) {
@@ -88,13 +99,6 @@ const Map = () => {
       markerData.latitude,
       markerData.longitude,
     );
-    const marker = new kakao.maps.Marker({
-      position: markerPosition,
-      image: new kakao.maps.MarkerImage(
-        getIcon(markerData.mark),
-        new kakao.maps.Size(24, 35),
-      ),
-    });
 
     // 오버레이에 들어갈 내용
     const content = `<div class="customoverlay">

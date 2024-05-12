@@ -27,7 +27,6 @@ const OnBoardingD = () => {
     const timeRange = sessionStorage.getItem('preferTime');
     const sex = sessionStorage.getItem('sex');
     const workDay = sessionStorage.getItem('workDay');
-
     const ageString = sessionStorage.getItem('age');
     const arrivalTimeString = sessionStorage.getItem('arrivalTime');
 

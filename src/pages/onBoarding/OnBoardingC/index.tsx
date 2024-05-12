@@ -50,6 +50,8 @@ const OnBoardingC = () => {
   const addressStation = async () => {
     if (coords) {
       console.log(coords.x, coords.y);
+      sessionStorage.setItem('x', coords.x.toString());
+      sessionStorage.setItem('y', coords.y.toString());
       try {
         const response = await getAddressStation(coords);
         if (response?.isSuccess) {
