@@ -74,7 +74,6 @@ const TownInfoMap = ({ x, y }: MapProps) => {
           );
           if (mapMarkerResponse && mapMarkerResponse.isSuccess) {
             setMarkers(mapMarkerResponse.result.labels);
-            console.log(markers);
             mapMarkerResponse.result.labels.forEach((markerData) => {
               addMarker(markerData, map);
             });

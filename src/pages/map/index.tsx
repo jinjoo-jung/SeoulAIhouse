@@ -42,7 +42,6 @@ const Map = () => {
       window.kakao.maps.load(async () => {
         const destination = sessionStorage.getItem('destination');
         if (!destination) return;
-        console.log(destination);
 
         // sessionStorage에서 값을 불러올 때 null 체크를 수행
         const storedX = sessionStorage.getItem('x');
@@ -58,7 +57,6 @@ const Map = () => {
           x: mapCoords.x,
           radius: 1000,
         };
-        console.log('좌표: ', mapCoords.x, mapCoords.y);
         console.log(mapMarkerRequest);
 
         const position = new window.kakao.maps.LatLng(

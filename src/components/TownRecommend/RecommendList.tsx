@@ -11,7 +11,6 @@ interface RankingPros {
 }
 
 const RecommendList = ({ timeGroups }: RankingPros) => {
-  console.log(timeGroups);
   const [commonRange, setCommonRange] = useState<TownCardsResponse[]>([]);
 
   useEffect(() => {

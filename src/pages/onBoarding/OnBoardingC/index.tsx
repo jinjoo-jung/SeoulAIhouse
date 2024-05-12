@@ -44,6 +44,8 @@ const OnBoardingC = () => {
 
   const handleInputClick = () => {
     setIsModal((prev) => !prev);
+    setIsValidErrorMessage(false);
+    setAddress({ address: '' });
   };
 
   // 주소 주변 역 조회 함수
@@ -51,7 +53,6 @@ const OnBoardingC = () => {
     if (coords) {
       sessionStorage.setItem('x', coords.x.toString());
       sessionStorage.setItem('y', coords.y.toString());
-      console.log(coords.x, coords.y);
       try {
         const response = await getAddressStation(coords);
         if (response?.isSuccess) {

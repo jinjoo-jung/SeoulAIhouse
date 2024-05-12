@@ -11,10 +11,6 @@ const TownInfo = () => {
   const location = useLocation();
   const town = location.state?.town;
 
-  useEffect(() => {
-    console.log(town.x, town.y);
-  }, [town]);
-
   return (
     <div>
       <TownInfoContentContainer>
