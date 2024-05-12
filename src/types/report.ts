@@ -1,9 +1,9 @@
 export interface AIRequest {
   factors: [];
-  timeRange: string;
-  destination: string;
+  destination: string | null;
   town: string;
 }
+
 export interface AIResponse {
   isSuccess: true;
   message: string;
@@ -21,5 +21,5 @@ export interface AIResponse {
 
 export interface ChartDataResponse {
   name: string;
-  percent: string;
+  percent: number;
 }

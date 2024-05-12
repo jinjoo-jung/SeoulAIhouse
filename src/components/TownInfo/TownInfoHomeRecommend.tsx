@@ -38,7 +38,7 @@ const TownInfoHomeRecommend = ({ townName }: TownNameProps) => {
     <div>
       <HomeWrap>
         <img src={likeIcon} alt="likeIcon" />
-        <div>00동 매물</div>
+        <div>{townName} 매물</div>
       </HomeWrap>
       <ArrowAndScrollContainer>
         <LeftIconImg src={leftCircleIcon} alt="leftCircle" />

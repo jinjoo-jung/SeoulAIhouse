@@ -27,7 +27,7 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
   const getTimeRangeLabel = (timeRange: string) => {
     const labels = {
       WITHIN_30_MINUTES: '0분 ~ 30분',
-      WITHIN_60_MINUTES: '30분 ~ 60분', // 기본 매핑
+      WITHIN_60_MINUTES: '30분 ~ 60분',
       WITHIN_90_MINUTES: '60분 ~ 90분',
       OVER_90_MINUTES: '90분 이상',
     };

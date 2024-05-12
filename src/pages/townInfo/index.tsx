@@ -37,7 +37,7 @@ const TownInfo = () => {
       <TownInfoContentContainer>
         <RecommendHeader />
         <TownInfoContentWrap>
-          <TownInfoAI />
+          <TownInfoAI townName={town.town} />
           <TownInfoHomeRecommend townName={town.town} />
           <TownInfoPhone townName={town.town} />
           <TownInfoMap x={coords.x} y={coords.y} />

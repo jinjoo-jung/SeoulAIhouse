@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import chartTrain from '../../assets/chartTrain.svg';
 import chartTime from '../../assets/chartTime.svg';
@@ -9,94 +9,128 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from 'recharts';
+import { AIResponse, ChartDataResponse } from '../../types/report';
+import postReport from '../../api/postReport';
 
 const data = [
   {
-    subject: '안전성',
-    A: 120,
-    fullMark: 150,
+    name: '영화관',
+    percent: '33',
   },
   {
-    subject: '거리',
-    A: 98,
-    fullMark: 150,
+    name: '미술관',
+    percent: '89',
   },
   {
-    subject: '시간',
-    A: 86,
-    fullMark: 150,
+    name: '문화 복지 시설',
+    percent: '100',
   },
   {
-    subject: '주변 상가',
-    A: 99,
-    fullMark: 150,
+    name: '여성 복지 시설',
+    percent: '10',
   },
   {
-    subject: '교통',
-    A: 150,
-    fullMark: 150,
+    name: '약국',
+    percent: '52',
   },
   {
-    subject: '편의시설',
-    A: 65,
-    fullMark: 150,
+    name: '녹지 분포',
+    percent: '14',
   },
 ];
 
-const TownInfoAI = () => {
+interface TownNameProps {
+  townName: string;
+}
+
+const TownInfoAI = ({ townName }: TownNameProps) => {
+  const [reports, setReports] = useState<AIResponse | null>();
+  const [chartData, setChartData] = useState<ChartDataResponse[]>([]);
+
+  useEffect(() => {
+    const factorsString = sessionStorage.getItem('selectedLabels');
+    const factors = factorsString ? JSON.parse(factorsString) : [];
+    const destination = sessionStorage.getItem('destination');
+
+    const reportAI = async () => {
+      const reportRequest = {
+        factors: factors,
+        destination: destination,
+        town: townName,
+      };
+
+      try {
+        const reportResponse = await postReport(reportRequest);
+        setReports(reportResponse);
+        if (
+          reportResponse &&
+          reportResponse.result &&
+          reportResponse.result.graph
+        ) {
+          setChartData(reportResponse.result.graph);
+        } else {
+          console.log('Graph data is missing or invalid');
+          setChartData([]);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    reportAI();
+  }, [townName]);
+
   return (
     <TownInfoContainer>
       <TownInfoChartContainer>
-        <ChartTownText>동 AI 리포트</ChartTownText>
+        <ChartTownText>{townName}AI 리포트</ChartTownText>
         <ChartAIContainer>
           <ChartAIText>AI 종합 분석</ChartAIText>
-          <ChartContent>
-            가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가
-          </ChartContent>
+          <ChartContent>{reports?.result.totalStatement}</ChartContent>
         </ChartAIContainer>
         <ChartItemContainer>
           <ChartItemWrap>
             <ChartItemText>
               <p>추천도</p>
-              <div>88%</div>
+              <div>{reports?.result.matchRate}%</div>
             </ChartItemText>
             <ChartInfoContainer>
               <ChartInfoWrap>
                 <img src={chartTime} alt="chartTime" />
                 <div>소요시간</div>
               </ChartInfoWrap>
-              <div>10분</div>
+              <div>{reports?.result.travelTime}분</div>
             </ChartInfoContainer>
             <ChartInfoContainerB>
               <ChartInfoWrap>
                 <img src={chartTrain} alt="chartTrain" />
                 <div>지하철역</div>
               </ChartInfoWrap>
-              <div>이대역</div>
+              <div>{reports?.result.station}</div>
             </ChartInfoContainerB>
             <ChartInfoContainer>
               <ChartInfoText>평균 월세</ChartInfoText>
-              <div>80/500</div>
+              <div>{`${reports?.result.avgRental}/${reports?.result.avgDeposit}`}</div>
             </ChartInfoContainer>
             <ChartInfoContainerB>
               <ChartInfoText>평균 전세</ChartInfoText>
-              <div>80/500</div>
+              <div>{reports?.result.avgLump}</div>
             </ChartInfoContainerB>
           </ChartItemWrap>
           <ChartMainWrap>
             <RadarChart
               cx={300}
-              cy={250}
-              outerRadius={150}
-              width={500}
+              cy={270}
+              outerRadius={160}
+              width={550}
               height={500}
               data={data}>
               <PolarGrid />
-              <PolarAngleAxis dataKey="subject" />
+              <PolarAngleAxis dataKey="name" />
               <PolarRadiusAxis />
               <Radar
                 name="Mike"
-                dataKey="A"
+                dataKey="percent"
                 stroke="#8884d8"
                 fill="#8884d8"
                 fillOpacity={0.6}
@@ -175,6 +209,7 @@ const ChartItemText = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   font-size: 24px;
   font-weight: bold;
   div {
