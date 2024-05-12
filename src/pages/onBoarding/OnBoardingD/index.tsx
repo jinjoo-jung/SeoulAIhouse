@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import postOnboarding from '../../../api/postOnBoarding';
 import iconD1 from '../../../assets/onBoardingD1.svg';
 import iconD2 from '../../../assets/onBoardingD2.svg';
-import { get } from 'http';
 import getRanking from '../../../api/getRanking';
 
 const OnBoardingD = () => {
@@ -48,7 +47,6 @@ const OnBoardingD = () => {
       const response = await postOnboarding(onBoardingRequest);
       if (response && response.isSuccess) {
         sessionStorage.setItem('accessToken', response.result.accessToken);
-
         if (destination) {
           const rankingResponse = await getRanking({ destination });
           if (rankingResponse && rankingResponse.isSuccess) {

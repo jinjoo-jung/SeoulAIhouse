@@ -12,6 +12,7 @@ import OnBoardingC from './pages/onBoarding/OnBoardingC';
 import OnBoardingE from './pages/onBoarding/OnBoardingE';
 import Map from './pages/map';
 import { RecoilRoot } from 'recoil';
+import Loading from './components/shared/Loading';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/townRecommend" element={<TownRecommend />} />
             <Route path="map" element={<Map />} />
             <Route path="/townInfo" element={<TownInfo />} />
+            <Route path="/loading" element={<Loading />} />
           </Routes>
         </BrowserRouter>
       </RecoilRoot>
