@@ -92,7 +92,12 @@ const TownInfoAI = ({ townName }: TownNameProps) => {
           <ChartItemWrap>
             <ChartItemText>
               <p>추천도</p>
-              <div>{reports?.result.matchRate}%</div>
+              <div>
+                {reports?.result.matchRate
+                  ? parseFloat(reports.result.matchRate).toFixed(1)
+                  : 'N/A'}
+                %
+              </div>
             </ChartItemText>
             <ChartInfoContainer>
               <ChartInfoWrap>
@@ -131,9 +136,9 @@ const TownInfoAI = ({ townName }: TownNameProps) => {
               <Radar
                 name="Mike"
                 dataKey="percent"
-                stroke="#8884d8"
-                fill="#8884d8"
-                fillOpacity={0.6}
+                stroke="#0B9CDB"
+                fill="#0B9CDB"
+                fillOpacity={0.5}
               />
             </RadarChart>
           </ChartMainWrap>

@@ -73,6 +73,7 @@ const HomeWrap = styled.div`
   }
 `;
 const ScrollContainer = styled.div`
+  min-height: 300px;
   overflow-x: auto; // 가로 스크롤 가능하게 설정
   -ms-overflow-style: none; // IE와 Edge 스크롤바 숨김
   scrollbar-width: none; // Firefox 스크롤바 숨김
