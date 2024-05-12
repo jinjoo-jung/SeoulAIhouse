@@ -33,6 +33,7 @@ const OnBoardingAContainer = styled.div`
   background-image: url(${polygon});
   background-repeat: no-repeat;
   background-position: center left; // 이미지를 컨테이너의 중앙에 위치
+  z-index: 20;
 `;
 
 const LogoImg = styled.img`

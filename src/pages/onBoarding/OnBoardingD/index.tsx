@@ -6,11 +6,13 @@ import postOnboarding from '../../../api/postOnBoarding';
 import iconD1 from '../../../assets/onBoardingD1.svg';
 import iconD2 from '../../../assets/onBoardingD2.svg';
 import getRanking from '../../../api/getRanking';
+import Loading from '../../../components/shared/Loading';
 
 const OnBoardingD = () => {
   const navigate = useNavigate();
   const [preferTime, setPreferTime] = useState('');
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClickTimeButton = (preferTime: string) => {
     setPreferTime(preferTime);
@@ -42,27 +44,31 @@ const OnBoardingD = () => {
       arrivalTime: arrivalTime,
       workDay: workDay,
     };
-
-    try {
-      const response = await postOnboarding(onBoardingRequest);
-      if (response && response.isSuccess) {
-        sessionStorage.setItem('accessToken', response.result.accessToken);
-        if (destination) {
-          const rankingResponse = await getRanking({ destination });
-          if (rankingResponse && rankingResponse.isSuccess) {
-            navigate(`/townRecommend`, {
-              state: { rankingData: rankingResponse.result.timeGroups },
-            });
-          } else {
-            console.log('Failed to get ranking data:', rankingResponse);
+    setIsLoading(true);
+    setTimeout(async () => {
+      try {
+        const response = await postOnboarding(onBoardingRequest);
+        if (response && response.isSuccess) {
+          sessionStorage.setItem('accessToken', response.result.accessToken);
+          if (destination) {
+            const rankingResponse = await getRanking({ destination });
+            if (rankingResponse && rankingResponse.isSuccess) {
+              navigate(`/townRecommend`, {
+                state: { rankingData: rankingResponse.result.timeGroups },
+              });
+            } else {
+              console.log('Failed to get ranking data:', rankingResponse);
+            }
           }
+        } else {
+          console.log('Failed to get a valid response:', response);
         }
-      } else {
-        console.log('Failed to get a valid response:', response);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    }, 2000);
   };
 
   const handleClickLogo = () => {
@@ -71,37 +77,49 @@ const OnBoardingD = () => {
 
   return (
     <div>
-      <IconD1 src={iconD1} alt="iconD1" />
-      <IconD2 src={iconD2} alt="iconD1" />
-      <MiniLogo onClick={() => handleClickLogo()} src={seoul} alt="seoul" />
-      <OnBoardingBContainer>
-        <MainText>선호하는 소요시간을 선택해주세요. </MainText>
-        <ButtonContainer>
-          <TimeButton
-            onClick={() => handleClickTimeButton('WITHIN_30_MINUTES')}
-            isClicked={preferTime === 'WITHIN_30_MINUTES'}>
-            30분 이내
-          </TimeButton>
-          <TimeButton
-            onClick={() => handleClickTimeButton('WITHIN_60_MINUTES')}
-            isClicked={preferTime === 'WITHIN_60_MINUTES'}>
-            60분 이내
-          </TimeButton>
-          <TimeButton
-            onClick={() => handleClickTimeButton('WITHIN_90_MINUTES')}
-            isClicked={preferTime === 'WITHIN_90_MINUTES'}>
-            90분 이내
-          </TimeButton>
-          <TimeButton
-            onClick={() => handleClickTimeButton('OVER_90_MINUTES')}
-            isClicked={preferTime === 'OVER_90_MINUTES'}>
-            90분 이상
-          </TimeButton>
-        </ButtonContainer>
-        <NextButton onClick={() => handleClickNext()} disabled={!isValid}>
-          동네 추천 받으러 가기!
-        </NextButton>
-      </OnBoardingBContainer>
+      <div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <IconD1 src={iconD1} alt="iconD1" />
+            <IconD2 src={iconD2} alt="iconD1" />
+            <MiniLogo
+              onClick={() => handleClickLogo()}
+              src={seoul}
+              alt="seoul"
+            />
+            <OnBoardingBContainer>
+              <MainText>선호하는 소요시간을 선택해주세요. </MainText>
+              <ButtonContainer>
+                <TimeButton
+                  onClick={() => handleClickTimeButton('WITHIN_30_MINUTES')}
+                  isClicked={preferTime === 'WITHIN_30_MINUTES'}>
+                  30분 이내
+                </TimeButton>
+                <TimeButton
+                  onClick={() => handleClickTimeButton('WITHIN_60_MINUTES')}
+                  isClicked={preferTime === 'WITHIN_60_MINUTES'}>
+                  60분 이내
+                </TimeButton>
+                <TimeButton
+                  onClick={() => handleClickTimeButton('WITHIN_90_MINUTES')}
+                  isClicked={preferTime === 'WITHIN_90_MINUTES'}>
+                  90분 이내
+                </TimeButton>
+                <TimeButton
+                  onClick={() => handleClickTimeButton('OVER_90_MINUTES')}
+                  isClicked={preferTime === 'OVER_90_MINUTES'}>
+                  90분 이상
+                </TimeButton>
+              </ButtonContainer>
+              <NextButton onClick={() => handleClickNext()} disabled={!isValid}>
+                동네 추천 받으러 가기!
+              </NextButton>
+            </OnBoardingBContainer>
+          </>
+        )}
+      </div>
     </div>
   );
 };
