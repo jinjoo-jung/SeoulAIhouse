@@ -85,7 +85,7 @@ const TownInfoAI = ({ townName }: TownNameProps) => {
       <TownInfoChartContainer>
         <ChartTownText>{townName}AI 리포트</ChartTownText>
         <ChartAIContainer>
-          <ChartAIText>AI 종합 분석</ChartAIText>
+          <ChartAIText>서울시집 AI 분석 결과, </ChartAIText>
           <ChartContent>{reports?.result.totalStatement}</ChartContent>
         </ChartAIContainer>
         <ChartItemContainer>
