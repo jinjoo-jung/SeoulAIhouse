@@ -16,10 +16,6 @@ const RecommendCommon = ({ number, town }: TownProps) => {
     navigate('/townInfo', { state: { town: town } });
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <RecommendCommonContainer onClick={() => handleRecommendClick()}>
       <Ranking>{number}</Ranking>
