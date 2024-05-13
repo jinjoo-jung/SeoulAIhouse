@@ -5,7 +5,9 @@ const ScrollToTop = () => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100); // 100ms 지연 후 스크롤 이동
   }, [location]);
 
   return null;
