@@ -22,7 +22,7 @@ const OnBoardingA = () => {
         src={SeoulBig}
         alt="SeoulBig"
       />
-      <MainText>구해줘 홈즈를 통해 자신에게 맞는 동네를 추천받고,</MainText>
+      <MainText>서울AI집을 통해 자신에게 맞는 동네를 추천받고,</MainText>
       <MainText>그에 맞는 매물을 확인해보세요!</MainText>
       <StartButton onClick={() => handleClickStart()}>시작하기</StartButton>
     </OnBoardingAContainer>
