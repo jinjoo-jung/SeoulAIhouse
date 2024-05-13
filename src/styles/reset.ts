@@ -144,6 +144,8 @@ const reset = css`
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans KR';
+    overflow-x: hidden; /* 가로 스크롤바 제거 */
+    width: 100%; /* 너비를 화면 너비로 제한 */
   }
 `;
 

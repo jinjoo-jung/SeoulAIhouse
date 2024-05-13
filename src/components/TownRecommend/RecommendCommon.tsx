@@ -14,6 +14,7 @@ const RecommendCommon = ({ number, town }: TownProps) => {
 
   const handleRecommendClick = () => {
     navigate('/townInfo', { state: { town: town } });
+    window.scrollTo(0, 0); // 네비게이션 후 스크롤을 상단으로 이동
   };
 
   return (
