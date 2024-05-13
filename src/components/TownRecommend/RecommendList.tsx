@@ -42,13 +42,19 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
       <ArrowAndScrollContainer>
         <ScrollContainer>
           <RecommendCommonWrap>
-            {commonRange.map((town, townIndex) => (
-              <RecommendCommon
-                key={townIndex}
-                town={town}
-                number={townIndex + 1}
-              />
-            ))}
+            {commonRange.length > 0 ? (
+              commonRange.map((town, townIndex) => (
+                <RecommendCommon
+                  key={townIndex}
+                  town={town}
+                  number={townIndex + 1}
+                />
+              ))
+            ) : (
+              <div style={{ padding: '20px', fontSize: '18px' }}>
+                해당 시간대의 추천 동네는 없습니다.
+              </div>
+            )}
           </RecommendCommonWrap>
         </ScrollContainer>
       </ArrowAndScrollContainer>
@@ -62,13 +68,19 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
           <ArrowAndScrollContainer>
             <ScrollContainer>
               <RecommendCommonWrap>
-                {group.townCards.map((town, townIndex) => (
-                  <RecommendCommon
-                    key={townIndex}
-                    town={town}
-                    number={townIndex + 1}
-                  />
-                ))}
+                {group.townCards.length > 0 ? (
+                  group.townCards.map((town, townIndex) => (
+                    <RecommendCommon
+                      key={townIndex}
+                      town={town}
+                      number={townIndex + 1}
+                    />
+                  ))
+                ) : (
+                  <div style={{ padding: '20px', fontSize: '18px' }}>
+                    해당 시간대의 추천 동네는 없습니다.
+                  </div>
+                )}
               </RecommendCommonWrap>
             </ScrollContainer>
           </ArrowAndScrollContainer>
