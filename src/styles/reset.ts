@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
 
 const reset = css`
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+
   html,
   body,
   div,
@@ -141,6 +143,7 @@ const reset = css`
     height: 100vh;
     margin: 0;
     padding: 0;
+    font-family: 'Noto Sans KR';
   }
 `;
 
