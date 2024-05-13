@@ -97,7 +97,7 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
               <div>
                 {reports?.result.matchRate
                   ? parseFloat(reports.result.matchRate).toFixed(1)
-                  : 'N/A'}
+                  : ''}
                 %
               </div>
             </ChartItemText>
@@ -172,7 +172,7 @@ const ChartTownText = styled.div`
 
 const ChartAIContainer = styled.div`
   width: 1048px;
-  height: 113px;
+  height: auto;
   background-color: #f6f6f6;
   border-radius: 20px;
   padding: 40px;
