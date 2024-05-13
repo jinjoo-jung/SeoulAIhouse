@@ -41,9 +41,10 @@ const data = [
 
 interface TownNameProps {
   townName: string;
+  station: string;
 }
 
-const TownInfoAI = ({ townName }: TownNameProps) => {
+const TownInfoAI = ({ townName, station }: TownNameProps) => {
   const [reports, setReports] = useState<AIResponse | null>();
   const [chartData, setChartData] = useState<ChartDataResponse[]>([]);
 
@@ -57,6 +58,7 @@ const TownInfoAI = ({ townName }: TownNameProps) => {
         factors: factors,
         destination: destination,
         town: townName,
+        station: station,
       };
 
       try {

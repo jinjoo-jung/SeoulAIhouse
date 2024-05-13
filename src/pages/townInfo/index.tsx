@@ -16,7 +16,7 @@ const TownInfo = () => {
       <TownInfoContentContainer>
         <RecommendHeader />
         <TownInfoContentWrap>
-          <TownInfoAI townName={town.town} />
+          <TownInfoAI townName={town.town} station={town.station} />
           <TownInfoHomeRecommend townName={town.town} />
           <TownInfoPhone townName={town.town} />
           <TownInfoMap x={town.x} y={town.y} />

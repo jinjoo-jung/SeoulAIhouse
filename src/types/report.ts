@@ -2,6 +2,7 @@ export interface AIRequest {
   factors: [];
   destination: string | null;
   town: string;
+  station: string | null;
 }
 
 export interface AIResponse {
