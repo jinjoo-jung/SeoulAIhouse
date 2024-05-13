@@ -64,7 +64,12 @@ const OnBoardingE = () => {
   useEffect(() => {
     const validateForm = () => {
       return (
-        sex !== '' && age !== null && workDay !== '' && arrivalTime !== null
+        sex !== '' &&
+        age !== null &&
+        workDay !== '' &&
+        arrivalTime !== null &&
+        !isValidAge &&
+        !isValidArrivalTime
       );
     };
     setIsValid(validateForm());
