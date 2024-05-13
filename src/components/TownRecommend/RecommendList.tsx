@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Clock from '../../assets/Clock.svg';
 import RecommendCommon from './RecommendCommon';
 import styled from '@emotion/styled';
-import leftCircleIcon from '../../assets/leftCircle.svg';
-import rightCircleIcon from '../../assets/rightCircle.svg';
 import { TimeGroupsResponse, TownCardsResponse } from '../../types/ranking';
 
 interface RankingPros {
@@ -42,7 +40,6 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
         <div>0분 ~ 60분</div>
       </TimeWrap>
       <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
             {commonRange.map((town, townIndex) => (
@@ -54,7 +51,6 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
             ))}
           </RecommendCommonWrap>
         </ScrollContainer>
-        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
       </ArrowAndScrollContainer>
       <Divider />
       {timeGroups.map((group, index) => (
@@ -64,7 +60,6 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
             <div>{getTimeRangeLabel(group.timeRange)}</div>
           </TimeWrap>
           <ArrowAndScrollContainer>
-            <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
             <ScrollContainer>
               <RecommendCommonWrap>
                 {group.townCards.map((town, townIndex) => (
@@ -76,7 +71,6 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
                 ))}
               </RecommendCommonWrap>
             </ScrollContainer>
-            <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
           </ArrowAndScrollContainer>
         </div>
       ))}

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import TownInfoHomeItem from './TownInfoHomeItem';
 import likeIcon from '../../assets/LikeIcon.svg';
 import styled from '@emotion/styled';
-import leftCircleIcon from '../../assets/leftCircle.svg';
-import rightCircleIcon from '../../assets/rightCircle.svg';
 import getHomeRecommend from '../../api/getHomeRecommend';
 import { HomeRecommendPropertyResponse } from '../../types/homeRecommned';
 
@@ -41,7 +39,6 @@ const TownInfoHomeRecommend = ({ townName }: TownNameProps) => {
         <div>{townName} 매물</div>
       </HomeWrap>
       <ArrowAndScrollContainer>
-        <LeftIconImg src={leftCircleIcon} alt="leftCircle" />
         <ScrollContainer>
           <RecommendCommonWrap>
             {properties.map((property, index) => (
@@ -49,7 +46,6 @@ const TownInfoHomeRecommend = ({ townName }: TownNameProps) => {
             ))}
           </RecommendCommonWrap>
         </ScrollContainer>
-        <RightIconImg src={rightCircleIcon} alt="rightCircleIcon" />
       </ArrowAndScrollContainer>
     </div>
   );
