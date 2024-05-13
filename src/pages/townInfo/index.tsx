@@ -31,7 +31,7 @@ export default TownInfo;
 const TownInfoContentContainer = styled.div`
   overflow: auto;
   width: 100%;
-  height: 100%;
+  // height: 100%;
 `;
 
 const TownInfoContentWrap = styled.div`
