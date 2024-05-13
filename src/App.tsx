@@ -13,6 +13,7 @@ import OnBoardingE from './pages/onBoarding/OnBoardingE';
 import Map from './pages/map';
 import { RecoilRoot } from 'recoil';
 import Loading from './components/shared/Loading';
+import ScrollToTop from './utils/ScrollToTop';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <RecoilRoot>
         <Global styles={reset} />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<OnBoarding />} />
             <Route path="/onBoardingB" element={<OnBoardingB />} />
