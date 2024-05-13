@@ -55,7 +55,7 @@ const Map = () => {
         const mapMarkerRequest = {
           y: mapCoords.y,
           x: mapCoords.x,
-          radius: 1000,
+          radius: 10000,
         };
         console.log(mapMarkerRequest);
 

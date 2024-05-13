@@ -187,7 +187,7 @@ const ChartAIText = styled.div`
 
 const ChartContent = styled.div`
   font-size: 20px;
-  padding: 10px;
+  line-height: 1.6; /* 폰트 크기의 1.6배의 줄 간격 */
 `;
 
 const ChartItemContainer = styled.div`
