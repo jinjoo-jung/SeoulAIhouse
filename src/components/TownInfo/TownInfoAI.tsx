@@ -187,6 +187,7 @@ const ChartAIText = styled.div`
 
 const ChartContent = styled.div`
   font-size: 20px;
+  padding: 10px;
 `;
 
 const ChartItemContainer = styled.div`
