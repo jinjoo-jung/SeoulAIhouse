@@ -231,6 +231,7 @@ const ChartInfoContainer = styled.div`
   align-items: center;
   font-size: 20px;
   font-weight: 600;
+  white-space: nowrap;
 `;
 
 const ChartInfoContainerB = styled.div`
@@ -240,6 +241,7 @@ const ChartInfoContainerB = styled.div`
   font-size: 20px;
   font-weight: 600;
   margin-top: -20px;
+  white-space: nowrap;
 `;
 
 const ChartInfoText = styled.div`

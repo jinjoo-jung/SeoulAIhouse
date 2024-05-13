@@ -120,6 +120,7 @@ const InfoWrap = styled.div`
   gap: 40px;
   padding: 2px;
   margin-left: 55px;
+  white-space: nowrap;
 `;
 
 const InfoItem = styled.div`
