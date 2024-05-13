@@ -31,14 +31,15 @@ const OnBoardingA = () => {
 export default OnBoardingA;
 
 const OnBoardingAContainer = styled.div`
-  height: 100vh;
+  height: 100vh; /* 뷰포트의 전체 높이 */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-image: url(${PolygonA});
   background-repeat: no-repeat;
-  background-position: center right; // 이미지를 컨테이너의 중앙에 위치
+  background-position: center right;
+  background-size: cover;
 `;
 
 const LogoImg = styled.img`
