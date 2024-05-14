@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import miniHome from '../../assets/miniHome.svg';
 import miniMap from '../../assets/miniMap.svg';
+import areaIcon from '../../assets/area.svg';
+
 import { HomeRecommendPropertyResponse } from '../../types/homeRecommned';
 
 interface HomeRecommendItemProps {
@@ -23,7 +25,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
       case 'MONTH':
         return `${rental}/${deposit}`;
       default:
-        return '0';
+        return '-';
     }
   };
 
@@ -36,7 +38,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
       case 'LUMP':
         return `${deposit}`;
       default:
-        return '0';
+        return '-';
     }
   };
 
@@ -59,13 +61,12 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
         <div>
           <InfoMapWrap>
             <img src={miniMap} alt="miniMap" />
-            <div>{property.address}</div>
+            <div>{`${property.type}/${property.floor}`}</div>
           </InfoMapWrap>
         </div>
         <div>
           <InfoMapWrap>
-            <img src={miniHome} alt="miniHome" />
-            <div>면적:</div>
+            <img src={areaIcon} alt="areaIcon" />
             <div>{calculateArea(property.area, property.floor)}m²</div>
           </InfoMapWrap>
         </div>
