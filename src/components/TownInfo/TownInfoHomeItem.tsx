@@ -151,5 +151,5 @@ const InfoItemPrice = styled.div`
 `;
 
 const Temp = styled.div`
-  margin-left: 20px;
+  padding-left: 20px;
 `;
