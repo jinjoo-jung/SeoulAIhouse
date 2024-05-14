@@ -48,6 +48,10 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
   const [reports, setReports] = useState<AIResponse | null>();
   const [chartData, setChartData] = useState<ChartDataResponse[]>([]);
 
+  function formatNumber(num: number) {
+    return num.toLocaleString();
+  }
+
   useEffect(() => {
     const factorsString = sessionStorage.getItem('selectedLabels');
     const factors = factorsString ? JSON.parse(factorsString) : [];

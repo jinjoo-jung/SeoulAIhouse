@@ -10,6 +10,10 @@ interface HomeRecommendItemProps {
   property: HomeRecommendPropertyResponse;
 }
 
+function formatNumber(num: number) {
+  return num.toLocaleString();
+}
+
 const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   const calculateArea = (area: number, floor: number) => {
     const result = area / floor;
@@ -23,7 +27,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   ) => {
     switch (rentType) {
       case 'MONTH':
-        return `${rental}/${deposit}`;
+        return `${formatNumber(rental)}/${formatNumber(deposit)}`;
       default:
         return '-';
     }
@@ -36,7 +40,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   ) => {
     switch (rentType) {
       case 'LUMP':
-        return `${deposit}`;
+        return formatNumber(deposit);
       default:
         return '-';
     }
@@ -118,6 +122,7 @@ const InfoMapWrap = styled.div`
   font-size: 20px;
   img {
     margin-right: 16px;
+    margin-left: 30px;
   }
 `;
 
@@ -139,7 +144,7 @@ const InfoItem = styled.div`
   font-weight: bold;
   white-space: nowrap;
   color: #8c8c8c;
-  margin-left: 60px;
+  margin-left: 30px;
 `;
 
 const InfoItemPrice = styled.div`
@@ -150,6 +155,4 @@ const InfoItemPrice = styled.div`
   color: black;
 `;
 
-const Temp = styled.div`
-  padding-left: 20px;
-`;
+const Temp = styled.div``;

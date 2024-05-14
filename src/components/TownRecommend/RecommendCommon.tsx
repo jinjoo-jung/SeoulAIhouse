@@ -9,6 +9,10 @@ interface TownProps {
   town: TownCardsResponse;
 }
 
+function formatNumber(num: number) {
+  return num.toLocaleString();
+}
+
 const RecommendCommon = ({ number, town }: TownProps) => {
   const navigate = useNavigate();
 
@@ -31,12 +35,12 @@ const RecommendCommon = ({ number, town }: TownProps) => {
         <InfoWrap>
           <InfoItem>평균 월세</InfoItem>
           <InfoItemPrice>
-            {`${town.avgRental}/${town.avgDeposit}`}
+            {`${formatNumber(town.avgRental)}/${formatNumber(town.avgDeposit)}`}
           </InfoItemPrice>
         </InfoWrap>
         <InfoWrap>
           <InfoItem>평균 전세</InfoItem>
-          <InfoItemPrice>{town.avgLump}</InfoItemPrice>
+          <InfoItemPrice>{formatNumber(town.avgLump)}</InfoItemPrice>
         </InfoWrap>
       </RecommendCommonWrap>
     </RecommendCommonContainer>
