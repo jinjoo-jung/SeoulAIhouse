@@ -123,12 +123,11 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
             </ChartInfoContainerB>
             <ChartInfoContainer>
               <ChartInfoText>평균 월세</ChartInfoText>
-              <div>{`${reports?.result.avgRental}/${reports?.result.avgDeposit}`}</div>
-              {`${formatNumber(reports?.result.avgRental)}/${formatNumber(reports?.result.avgDeposit)}(만원)`}
+              {`${formatNumber(reports?.result.avgRental)}/${formatNumber(reports?.result.avgDeposit)} (만원)`}
             </ChartInfoContainer>
             <ChartInfoContainerB>
               <ChartInfoText>평균 전세</ChartInfoText>
-              <div>{`${formatNumber(reports?.result.avgLump)}(만원)`}</div>
+              <div>{`${formatNumber(reports?.result.avgLump)} (만원)`}</div>
             </ChartInfoContainerB>
           </ChartItemWrap>
           <ChartMainWrap>
