@@ -27,7 +27,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   ) => {
     switch (rentType) {
       case 'MONTH':
-        return `${formatNumber(rental)}/${formatNumber(deposit)}`;
+        return `${formatNumber(deposit)}/${formatNumber(rental)}`;
       default:
         return '-';
     }
