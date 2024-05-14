@@ -48,10 +48,12 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
   const [reports, setReports] = useState<AIResponse | null>();
   const [chartData, setChartData] = useState<ChartDataResponse[]>([]);
 
-  function formatNumber(num: number) {
-    return num.toLocaleString();
+  function formatNumber(number: number | undefined) {
+    if (number === undefined) {
+      return '-';
+    }
+    return number.toLocaleString();
   }
-
   useEffect(() => {
     const factorsString = sessionStorage.getItem('selectedLabels');
     const factors = factorsString ? JSON.parse(factorsString) : [];
@@ -122,10 +124,11 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
             <ChartInfoContainer>
               <ChartInfoText>평균 월세</ChartInfoText>
               <div>{`${reports?.result.avgRental}/${reports?.result.avgDeposit}`}</div>
+              {`${formatNumber(reports?.result.avgRental)}/${formatNumber(reports?.result.avgDeposit)}(만원)`}
             </ChartInfoContainer>
             <ChartInfoContainerB>
               <ChartInfoText>평균 전세</ChartInfoText>
-              <div>{reports?.result.avgLump}</div>
+              <div>{`${formatNumber(reports?.result.avgLump)}(만원)`}</div>
             </ChartInfoContainerB>
           </ChartItemWrap>
           <ChartMainWrap>
