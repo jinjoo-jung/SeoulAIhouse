@@ -58,18 +58,18 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
     <RecommendCommonContainer>
       <RecommendCommonWrap>
         <AreaText>{property.name}</AreaText>
-        <div>
+        <Temp>
           <InfoMapWrap>
             <img src={miniMap} alt="miniMap" />
             <div>{`${property.type}/${property.floor}`}</div>
           </InfoMapWrap>
-        </div>
-        <div>
+        </Temp>
+        <Temp>
           <InfoMapWrap>
             <img src={areaIcon} alt="areaIcon" />
             <div>{calculateArea(property.area, property.floor)}m²</div>
           </InfoMapWrap>
-        </div>
+        </Temp>
         <InfoMapText />
         <InfoWrap>
           <InfoItem>월세</InfoItem>
@@ -148,4 +148,8 @@ const InfoItemPrice = styled.div`
   font-size: 24px;
   font-weight: bold;
   color: black;
+`;
+
+const Temp = styled.div`
+  margin-left: 20px;
 `;
