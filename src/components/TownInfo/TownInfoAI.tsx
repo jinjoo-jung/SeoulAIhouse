@@ -91,9 +91,9 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
   return (
     <TownInfoContainer>
       <TownInfoChartContainer>
-        <ChartTownText>{townName}AI 리포트</ChartTownText>
+        <ChartTownText>{townName} AI 리포트</ChartTownText>
         <ChartAIContainer>
-          <ChartAIText>서울시집 AI 분석 결과, </ChartAIText>
+          <ChartAIText>AI 종합 분석</ChartAIText>
           <ChartContent>{reports?.result.totalStatement}</ChartContent>
         </ChartAIContainer>
         <ChartItemContainer>
