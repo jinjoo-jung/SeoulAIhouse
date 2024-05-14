@@ -50,7 +50,7 @@ const TownInfoMap = ({ x, y }: MapProps) => {
         const mapMarkerRequest = {
           y: y,
           x: x,
-          radius: 10000,
+          radius: 50000,
         };
 
         const position = new window.kakao.maps.LatLng(
