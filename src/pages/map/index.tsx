@@ -111,7 +111,7 @@ const Map = () => {
         font-size: 20px; 
         padding-left:48px;
          border: 1px solid rgba(129, 129, 129, 0.4);
-          border-radius: 100px;">${markerData.avgRental}/${markerData.avgDeposit}</div>
+          border-radius: 100px;">${markerData.avgDeposit}/${markerData.avgRental}</div>
    </div>
  </div>`;
 
