@@ -11,6 +11,10 @@ const TownInfo = () => {
   const location = useLocation();
   const town = location.state?.town;
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // 컴포넌트가 마운트될 때 스크롤 위치를 맨 위로 설정
+  }, []);
+
   return (
     <div>
       <TownInfoContentContainer>
@@ -31,7 +35,7 @@ export default TownInfo;
 const TownInfoContentContainer = styled.div`
   overflow: auto;
   width: 100%;
-  // height: 100%;
+  height: 100vh;
 `;
 
 const TownInfoContentWrap = styled.div`
