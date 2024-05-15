@@ -95,22 +95,22 @@ const OnBoardingD = () => {
                 <TimeButton
                   onClick={() => handleClickTimeButton('WITHIN_30_MINUTES')}
                   isClicked={preferTime === 'WITHIN_30_MINUTES'}>
-                  30분 이내
+                  20분 이내
                 </TimeButton>
                 <TimeButton
                   onClick={() => handleClickTimeButton('WITHIN_60_MINUTES')}
                   isClicked={preferTime === 'WITHIN_60_MINUTES'}>
-                  60분 이내
+                  40분 이내
                 </TimeButton>
                 <TimeButton
                   onClick={() => handleClickTimeButton('WITHIN_90_MINUTES')}
                   isClicked={preferTime === 'WITHIN_90_MINUTES'}>
-                  90분 이내
+                  60분 이내
                 </TimeButton>
                 <TimeButton
                   onClick={() => handleClickTimeButton('OVER_90_MINUTES')}
                   isClicked={preferTime === 'OVER_90_MINUTES'}>
-                  90분 이상
+                  60분 이상
                 </TimeButton>
               </ButtonContainer>
               <NextButton onClick={() => handleClickNext()} disabled={!isValid}>

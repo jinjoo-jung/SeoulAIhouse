@@ -10,10 +10,24 @@ interface RankingPros {
 
 const RecommendList = ({ timeGroups }: RankingPros) => {
   const [commonRange, setCommonRange] = useState<TownCardsResponse[]>([]);
+  const [timeLabel, setTimeLabel] = useState<string>('');
 
   useEffect(() => {
+    const preferTime =
+      sessionStorage.getItem('preferTime') || 'WITHIN_60_MINUTES';
     const targetGroup = timeGroups.find(
-      (group) => group.timeRange === 'WITHIN_60_MINUTES',
+      (group) => group.timeRange === preferTime,
+    );
+
+    const labels = {
+      WITHIN_30_MINUTES: '0분 ~ 20분',
+      WITHIN_60_MINUTES: '20분 ~ 40분',
+      WITHIN_90_MINUTES: '40분 ~ 60분',
+      OVER_90_MINUTES: '60분 이상',
+    };
+
+    setTimeLabel(
+      labels[preferTime as keyof typeof labels] || '정의되지 않은 시간 범위',
     );
 
     if (targetGroup) {
@@ -23,10 +37,10 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
 
   const getTimeRangeLabel = (timeRange: string) => {
     const labels = {
-      WITHIN_30_MINUTES: '0분 ~ 30분',
-      WITHIN_60_MINUTES: '30분 ~ 60분',
-      WITHIN_90_MINUTES: '60분 ~ 90분',
-      OVER_90_MINUTES: '90분 이상',
+      WITHIN_30_MINUTES: '0분 ~ 20분',
+      WITHIN_60_MINUTES: '20분 ~ 40분',
+      WITHIN_90_MINUTES: '40분 ~ 60분',
+      OVER_90_MINUTES: '60분 이상',
     };
     return (
       labels[timeRange as keyof typeof labels] || '정의되지 않은 시간 범위'
@@ -37,7 +51,7 @@ const RecommendList = ({ timeGroups }: RankingPros) => {
     <RecommendListContainer>
       <TimeWrap>
         <img src={Clock} alt="clock" />
-        <div>0분 ~ 60분</div>
+        <div>{timeLabel}</div>
       </TimeWrap>
       <ArrowAndScrollContainer>
         <ScrollContainer>
