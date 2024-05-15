@@ -1,4 +1,4 @@
-import React, { PureComponent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import chartTrain from '../../assets/chartTrain.svg';
 import chartTime from '../../assets/chartTime.svg';
@@ -11,33 +11,7 @@ import {
 } from 'recharts';
 import { AIResponse, ChartDataResponse } from '../../types/report';
 import postReport from '../../api/postReport';
-
-const data = [
-  {
-    name: '영화관',
-    percent: '33',
-  },
-  {
-    name: '미술관',
-    percent: '89',
-  },
-  {
-    name: '문화 복지 시설',
-    percent: '100',
-  },
-  {
-    name: '여성 복지 시설',
-    percent: '10',
-  },
-  {
-    name: '약국',
-    percent: '52',
-  },
-  {
-    name: '녹지 분포',
-    percent: '14',
-  },
-];
+import ReportLoading from '../shared/ReportLoading';
 
 interface TownNameProps {
   townName: string;
@@ -47,6 +21,7 @@ interface TownNameProps {
 const TownInfoAI = ({ townName, station }: TownNameProps) => {
   const [reports, setReports] = useState<AIResponse | null>();
   const [chartData, setChartData] = useState<ChartDataResponse[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   function formatNumber(number: number | undefined) {
     if (number === undefined) {
@@ -66,7 +41,7 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
         town: townName,
         station: station,
       };
-
+      setIsLoading(true);
       try {
         const reportResponse = await postReport(reportRequest);
         setReports(reportResponse);
@@ -82,6 +57,8 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -89,70 +66,76 @@ const TownInfoAI = ({ townName, station }: TownNameProps) => {
   }, [townName]);
 
   return (
-    <TownInfoContainer>
-      <TownInfoChartContainer>
-        <ChartTownText>{townName} AI 리포트</ChartTownText>
-        <ChartAIContainer>
-          <ChartAIText>AI 종합 분석</ChartAIText>
-          <ChartContent>{reports?.result.totalStatement}</ChartContent>
-        </ChartAIContainer>
-        <ChartItemContainer>
-          <ChartItemWrap>
-            <ChartItemText>
-              <p>추천도</p>
-              <div>
-                {reports?.result.matchRate
-                  ? parseFloat(reports.result.matchRate).toFixed(1)
-                  : ''}
-                %
-              </div>
-            </ChartItemText>
-            <ChartInfoContainer>
-              <ChartInfoWrap>
-                <img src={chartTime} alt="chartTime" />
-                <div>소요시간</div>
-              </ChartInfoWrap>
-              <div>{reports?.result.travelTime}분</div>
-            </ChartInfoContainer>
-            <ChartInfoContainerB>
-              <ChartInfoWrap>
-                <img src={chartTrain} alt="chartTrain" />
-                <div>지하철역</div>
-              </ChartInfoWrap>
-              <div>{reports?.result.station}</div>
-            </ChartInfoContainerB>
-            <ChartInfoContainer>
-              <ChartInfoText>평균 월세</ChartInfoText>
-              {`${formatNumber(reports?.result.avgDeposit)}/${formatNumber(reports?.result.avgRental)}`}
-            </ChartInfoContainer>
-            <ChartInfoContainerB>
-              <ChartInfoText>평균 전세</ChartInfoText>
-              <div>{`${formatNumber(reports?.result.avgLump)}`}</div>
-            </ChartInfoContainerB>
-          </ChartItemWrap>
-          <ChartMainWrap>
-            <RadarChart
-              cx={300}
-              cy={270}
-              outerRadius={160}
-              width={550}
-              height={500}
-              data={chartData}>
-              <PolarGrid />
-              <PolarAngleAxis dataKey="name" />
-              <PolarRadiusAxis />
-              <Radar
-                name="Mike"
-                dataKey="percent"
-                stroke="#0B9CDB"
-                fill="#0B9CDB"
-                fillOpacity={0.5}
-              />
-            </RadarChart>
-          </ChartMainWrap>
-        </ChartItemContainer>
-      </TownInfoChartContainer>
-    </TownInfoContainer>
+    <>
+      {isLoading ? (
+        <ReportLoading />
+      ) : (
+        <TownInfoContainer>
+          <TownInfoChartContainer>
+            <ChartTownText>{townName} AI 리포트</ChartTownText>
+            <ChartAIContainer>
+              <ChartAIText>AI 종합 분석</ChartAIText>
+              <ChartContent>{reports?.result.totalStatement}</ChartContent>
+            </ChartAIContainer>
+            <ChartItemContainer>
+              <ChartItemWrap>
+                <ChartItemText>
+                  <p>추천도</p>
+                  <div>
+                    {reports?.result.matchRate
+                      ? parseFloat(reports.result.matchRate).toFixed(1)
+                      : ''}
+                    %
+                  </div>
+                </ChartItemText>
+                <ChartInfoContainer>
+                  <ChartInfoWrap>
+                    <img src={chartTime} alt="chartTime" />
+                    <div>소요시간</div>
+                  </ChartInfoWrap>
+                  <div>{reports?.result.travelTime}분</div>
+                </ChartInfoContainer>
+                <ChartInfoContainerB>
+                  <ChartInfoWrap>
+                    <img src={chartTrain} alt="chartTrain" />
+                    <div>지하철역</div>
+                  </ChartInfoWrap>
+                  <div>{reports?.result.station}</div>
+                </ChartInfoContainerB>
+                <ChartInfoContainer>
+                  <ChartInfoText>평균 월세</ChartInfoText>
+                  {`${formatNumber(reports?.result.avgDeposit)}/${formatNumber(reports?.result.avgRental)}`}
+                </ChartInfoContainer>
+                <ChartInfoContainerB>
+                  <ChartInfoText>평균 전세</ChartInfoText>
+                  <div>{`${formatNumber(reports?.result.avgLump)}`}</div>
+                </ChartInfoContainerB>
+              </ChartItemWrap>
+              <ChartMainWrap>
+                <RadarChart
+                  cx={300}
+                  cy={270}
+                  outerRadius={160}
+                  width={550}
+                  height={500}
+                  data={chartData}>
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="name" />
+                  <PolarRadiusAxis />
+                  <Radar
+                    name="Mike"
+                    dataKey="percent"
+                    stroke="#0B9CDB"
+                    fill="#0B9CDB"
+                    fillOpacity={0.5}
+                  />
+                </RadarChart>
+              </ChartMainWrap>
+            </ChartItemContainer>
+          </TownInfoChartContainer>
+        </TownInfoContainer>
+      )}
+    </>
   );
 };
 

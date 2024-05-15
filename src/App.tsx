@@ -14,6 +14,7 @@ import Map from './pages/map';
 import { RecoilRoot } from 'recoil';
 import Loading from './components/shared/Loading';
 import ScrollToTop from './utils/ScrollToTop';
+import ReportLoading from './components/shared/ReportLoading';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="map" element={<Map />} />
             <Route path="/townInfo" element={<TownInfo />} />
             <Route path="/loading" element={<Loading />} />
+            <Route path="/reportLoading" element={<ReportLoading />} />
           </Routes>
         </BrowserRouter>
       </RecoilRoot>
