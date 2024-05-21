@@ -160,7 +160,6 @@ const ChartTownText = styled.div`
 `;
 
 const ChartAIContainer = styled.div`
-  width: 1048px;
   height: auto;
   background-color: #f6f6f6;
   border-radius: 20px;
@@ -180,12 +179,10 @@ const ChartContent = styled.div`
 `;
 
 const ChartItemContainer = styled.div`
-  width: 834px;
   height: 432px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 150px;
 `;
 
 const ChartMainWrap = styled.div`

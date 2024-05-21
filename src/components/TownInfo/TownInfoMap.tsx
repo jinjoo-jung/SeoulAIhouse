@@ -203,7 +203,6 @@ const MapContainer = styled.div`
 `;
 
 const MapStyle = styled.div`
-width: 1048px;
 height: 533px;
 display: block
 zIndex: 1;

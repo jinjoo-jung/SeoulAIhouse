@@ -75,7 +75,6 @@ const PhoneContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 1048px;
   height: auto; // 높이를 auto로 설정하여 내용에 맞게 조정
   background-color: #f6f6f6;
   border-radius: 20px;
