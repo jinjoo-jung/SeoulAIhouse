@@ -27,7 +27,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
   ) => {
     switch (rentType) {
       case 'MONTH':
-        return `${formatNumber(deposit)}/${formatNumber(rental)}`;
+        return `${formatNumber(deposit)} / ${formatNumber(rental)}`;
       default:
         return '-';
     }
@@ -65,7 +65,7 @@ const TownInfoHomeItem = ({ property }: HomeRecommendItemProps) => {
         <Temp>
           <InfoMapWrap>
             <img src={miniMap} alt="miniMap" />
-            <div>{`${property.type}/${property.floor}`}</div>
+            <div>{`${property.type} / ${property.floor}`}층</div>
           </InfoMapWrap>
         </Temp>
         <Temp>

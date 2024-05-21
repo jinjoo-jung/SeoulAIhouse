@@ -35,7 +35,7 @@ const RecommendCommon = ({ number, town }: TownProps) => {
         <InfoWrap>
           <InfoItem>평균 월세</InfoItem>
           <InfoItemPrice>
-            {`${formatNumber(town.avgDeposit)}/${formatNumber(town.avgRental)}`}
+            {`${formatNumber(town.avgDeposit)} / ${formatNumber(town.avgRental)}`}
           </InfoItemPrice>
         </InfoWrap>
         <InfoWrap>
