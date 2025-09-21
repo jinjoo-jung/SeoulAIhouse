@@ -3,6 +3,8 @@
 > 청년 1인 가구를 위한 **개인 맞춤형 AI 거주지 추천** 서비스  
 > 월세·교통·통근시간을 종합해 “어디에 살면 좋을지”를 데이터로 제안합니다.
 
+<img width="697" height="389" alt="스크린샷 2024-09-18 오후 9 32 07" src="https://github.com/user-attachments/assets/35e5ab94-b693-4d2b-a143-1fbccce99255" />
+
 ## 🔗 Link
 - **GitHub (Org repos)**: https://github.com/orgs/Save-Homez/repositories
 - **배포 링크**: https://seoul-ai-house.vercel.app/
